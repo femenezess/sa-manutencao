@@ -8,12 +8,23 @@ export interface ServiceFAQ {
   answer: string;
 }
 
+export interface GalleryItem {
+  id: string;
+  serviceSlug: string;
+  serviceName: string;
+  title: string;
+  subtitle: string;
+  locationTag: string;
+  highlightText: string;
+}
+
 export interface ServiceData {
   slug: string;
   index: string;
   name: string;
   shortName: string;
   heroTitle: string;
+  heroHighlightWord: string;
   heroDescription: string;
   cardSummary: string;
   normSummary: string;
@@ -66,7 +77,8 @@ export interface RegionalCity {
 
 export const COMPANY_INFO = {
   name: 'S.A Manutenção',
-  signature: 'Soluções Completas em Manutenção Industrial, Predial e Comercial.',
+  signature: 'Serviços de Manutenção e Energia — Soluções Completas para Empresas, Condomínios e Residências.',
+  logoPath: '/assets/aistudio/logotipo_sa_manuten__o_68271bd4.jpeg',
   location: 'Salto – SP',
   regionList: ['Salto', 'Itu', 'Indaiatuba', 'Porto Feliz', 'Sorocaba'],
   phoneDisplay: '(11) 95145-9102',
@@ -74,8 +86,8 @@ export const COMPANY_INFO = {
   instagramHandle: '@manutencao.araujo',
   instagramUrl: 'https://www.instagram.com/manutencao.araujo/',
   defaultWhatsappMessage: 'Olá! Gostaria de solicitar um orçamento com a S.A Manutenção.',
-  mission: 'Manter operações funcionando, seguras e apresentáveis, enquanto nossos clientes concentram seus esforços no próprio negócio.',
-  valueProposition: 'Um único parceiro para diferentes necessidades de manutenção.',
+  mission: 'Manter seu imóvel, condomínio ou empresa funcionando de forma segura, econômica e bem cuidada, sem dores de cabeça.',
+  valueProposition: 'Conte com quem entende: 7 especialidades reunidas em um único parceiro de confiança.',
 };
 
 export function getWhatsAppLink(customMessage?: string): string {
@@ -85,658 +97,1032 @@ export function getWhatsAppLink(customMessage?: string): string {
 
 export const SERVICES_DATA: ServiceData[] = [
   {
-    slug: 'manutencao-eletrica',
+    slug: 'eletrica',
     index: '01',
-    name: 'Manutenção Elétrica',
-    shortName: 'Elétrica Industrial e Predial',
-    heroTitle: 'MANUTENÇÃO ELÉTRICA PREDIAL, COMERCIAL E INDUSTRIAL.',
+    name: 'Elétrica',
+    shortName: 'Instalações e Manutenção Elétrica',
+    heroTitle: 'SOLUÇÕES COMPLETAS EM ELÉTRICA PREDIAL, COMERCIAL E INDUSTRIAL',
+    heroHighlightWord: 'ELÉTRICA',
     heroDescription:
-      'Nosso principal segmento de atuação. Realizamos instalação, manutenção preventiva e corretiva de sistemas elétricos de baixa tensão, atendendo desde pequenos comércios até condomínios e estruturas industriais.',
+      'Mantenha a instalação elétrica em dia para evitar dores de cabeça, desperdício na conta de luz e riscos de curto-circuito. Atendemos residências, comércios, condomínios e indústrias.',
     cardSummary:
-      'Instalações elétricas, montagem de quadros de distribuição (QDF), correção de sobrecargas, balanceamento de fases e manutenção preventiva e corretiva.',
-    normSummary: 'NBR 5410 · NR-10 · Baixa Tensão',
+      'Quadros de distribuição (QDF), troca de disjuntores, instalação de iluminação LED, revisão contra sobrecargas, DPS/DR e manutenção preventiva e corretiva.',
+    normSummary: 'NBR 5410 · NR-10 · Economia e Segurança',
     presentationParagraphs: [
-      'A infraestrutura elétrica é a espinha dorsal de qualquer operação industrial, comercial ou condominial. Uma falha em um quadro de distribuição, sobrecarga de circuito ou curto-circuito não planejado pode paralisar máquinas, comprometer mercadorias refrigeradas e gerar sérios riscos patrimoniais.',
-      'A S.A Manutenção nasceu como especialista em serviços elétricos e atua com rigor técnico no diagnóstico, instalação, adequação e manutenção de sistemas elétricos de baixa tensão em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
-      'Todos os serviços são orientados pelas normas técnicas aplicáveis, especialmente a ABNT NBR 5410 (Instalações Elétricas de Baixa Tensão) e a NR-10 (Segurança em Instalações e Serviços em Eletricidade), garantindo confiabilidade operacional e proteção contra surtos e choques elétricos.',
+      'Uma instalação elétrica revisada por um profissional qualificado faz toda a diferença: evita prejuízos causados por serviços malfeitos, reduz o consumo na conta de energia e protege sua família, seus clientes e seus equipamentos.',
+      'A S.A Manutenção atua na identificação precisa de problemas elétricos ocultos — como tomadas sobrecarregadas, fios aquecendo e disjuntores desarmando — antes que se tornem grandes problemas.',
+      'Atendemos desde a substituição de iluminação comum por LED e revisão de quadros até instalações completas para comércios, condomínios e galpões em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
     ],
     executedServices: [
       {
-        title: 'Instalações elétricas completas',
-        description: 'Execução de pontos de força, iluminação técnica, eletrocalhas, perfilados e infraestrutura em ambientes industriais, comerciais e prediais.',
-      },
-      {
-        title: 'Manutenção preventiva e corretiva',
-        description: 'Atendimento programado para evitar paradas inesperadas e intervenção ágil para restabelecimento de circuitos com falha.',
+        title: 'Instalações e revisões elétricas completas',
+        description: 'Pontos de tomadas, interruptores, circuitos dedicados, infraestrutura e adequação de carga.',
       },
       {
         title: 'Montagem e organização de quadros (QDF)',
-        description: 'Reestruturação de quadros de distribuição de força e luz, identificação de circuitos, barramentos, terminais e organização de cabos.',
+        description: 'Revisão de disjuntores regularmente, balanceamento de fases e organização segura dos cabos.',
       },
       {
-        title: 'Instalação de DPS e DR',
-        description: 'Implementação de Dispositivos de Proteção contra Surtos (DPS) e Diferencial Residual (DR) para proteção de equipamentos e vidas.',
+        title: 'Substituição por iluminação em LED',
+        description: 'Modernização de lâmpadas, refletores e painéis LED que geram até 80% de economia de iluminação.',
       },
       {
-        title: 'Instalação e substituição de disjuntores',
-        description: 'Dimensionamento correto e troca de disjuntores termomagnéticos desgastados ou subdimensionados.',
+        title: 'Proteção contra surtos e choques (DPS e DR)',
+        description: 'Instalação de dispositivos essenciais para proteger eletrodomésticos, máquinas e pessoas.',
       },
       {
-        title: 'Balanceamento de fases',
-        description: 'Redistribuição técnica de cargas entre fases para eliminar aquecimento excessivo de condutores e desarmes constantes.',
+        title: 'Correção de falhas, curtos e sobrecargas',
+        description: 'Eliminação de pontos de aquecimento, tomadas derretendo e uso inadequado de extensões.',
       },
       {
-        title: 'Adequação de padrão de entrada',
-        description: 'Regularização e atualização de entrada de energia conforme exigências técnicas e demanda de carga instalada.',
-      },
-      {
-        title: 'Correção de sobrecargas e curtos-circuitos',
-        description: 'Rastreamento técnico com instrumentação de medição para eliminar pontos quentes, fugas de corrente e falhas de isolamento.',
-      },
-      {
-        title: 'Inspeções e relatórios técnicos',
-        description: 'Levantamento detalhado das condições das instalações elétricas com registro fotográfico e plano de ação corretivo.',
+        title: 'Manutenção preventiva e corretiva',
+        description: 'Inspeções técnicas periódicas para empresas, condomínios, lojas e residências.',
       },
     ],
     applications: [
       {
-        segment: 'Indústrias e Galpões Logísticos',
-        detail: 'Alimentação de máquinas, quadros de distribuição industrial, iluminação de alto pé-direito e proteção de comandos.',
+        segment: 'Comércios e Escritórios',
+        detail: 'Iluminação em LED, circuitos para ar-condicionado e proteção para computadores e equipamentos.',
       },
       {
-        segment: 'Comércios, Lojas e Restaurantes',
-        detail: 'Dimensionamento para equipamentos de refrigeração, climatização, fornos comerciais e iluminação de destaque sem queda de tensão.',
+        segment: 'Condomínios e Residências',
+        detail: 'Segurança elétrica para sua família e áreas comuns, quadros revisados e sensores de presença.',
       },
       {
-        segment: 'Condomínios Residenciais e Comerciais',
-        detail: 'Manutenção de bombas de recalque, iluminação de áreas comuns, portarias, garagens e quadros gerais.',
+        segment: 'Indústrias e Galpões',
+        detail: 'Quadros de distribuição de força, alimentação de máquinas e iluminação industrial.',
       },
       {
-        segment: 'Empresas e Escritórios Corporativos',
-        detail: 'Circuitos estabilizados para estações de trabalho, servidores, climatização e proteção contra surtos elétricos.',
+        segment: 'Restaurantes e Lojas',
+        detail: 'Estabilidade elétrica para câmaras frias, fornos, freezers e vitrines.',
       },
     ],
     technicalDifferentials: [
       {
-        title: 'Diagnóstico Preciso com Instrumentação',
-        description: 'Identificamos a causa raiz de aquecimentos, desarmes e fugas de corrente antes de substituir componentes.',
+        title: 'Identificação Precisa de Falhas',
+        description: 'Detectamos falhas ocultas com equipamentos de medição antes que causem paralisações.',
       },
       {
-        title: 'Organização e Identificação Técnica',
-        description: 'Quadros elétricos entregues limpos, anilhados e com identificação clara de cada circuito para facilitar futuras intervenções.',
+        title: 'Foco em Economia de Energia',
+        description: 'Orientamos sobre troca para LED, eliminação de fuga de corrente e dimensionamento correto.',
       },
       {
-        title: 'Planejamento para Mínima Parada',
-        description: 'Programamos desligamentos e manutenções críticas em horários que preservem o fluxo produtivo ou comercial do cliente.',
+        title: 'Segurança Profissional',
+        description: 'Serviço limpo, organizado e seguindo rigorosamente as normas NBR 5410 e NR-10.',
       },
     ],
     safetyAndNorms: {
-      title: 'Conformidade Técnica: NBR 5410 e NR-10',
-      subtitle: 'Execução rigorosamente alinhada às diretrizes de engenharia e segurança em eletricidade.',
+      title: 'Conformidade NBR 5410 e NR-10',
+      subtitle: 'Garantia de segurança para sua empresa, condomínio ou família.',
       items: [
-        'Dimensionamento adequado de condutores, barramentos e dispositivos de proteção conforme a ABNT NBR 5410.',
-        'Procedimentos de desenergização, bloqueio, sinalização e teste de ausência de tensão alinhados à NR-10.',
-        'Utilização obrigatória de EPIs dielétricos, luvas isolantes, capacetes e ferramental isolado para 1000V.',
-        'Prevenção ativa contra incêndios de origem elétrica provocados por conexões frouxas ou cabos subdimensionados.',
+        'Dimensionamento correto de cabos e disjuntores conforme a norma ABNT NBR 5410.',
+        'Atendimento seguro com profissionais qualificados e equipamentos de proteção (NR-10).',
+        'Prevenção contra incêndios causados por tomadas sobrecarregadas e conexões frouxas.',
+        'Orientações práticas de uso seguro e economia de energia.',
       ],
     },
     faqs: [
       {
-        question: 'Quais sinais indicam que o quadro elétrico (QDF) da empresa precisa de manutenção urgente?',
+        question: 'Como saber se minha instalação elétrica precisa de revisão?',
         answer:
-          'Desarmes frequentes de disjuntores, cheiro de queimado próximo ao quadro, cabos ou disjuntores aquecendo, oscilações na iluminação quando equipamentos ligam e fios emaranhados sem identificação são sinais claros de sobrecarga ou mau contato que exigem inspeção imediata.',
+          'Disjuntores que desarmam com frequência, tomadas esquentando, cheiro de queimado, lâmpadas piscando ou aumento repentino na conta de luz indicam a necessidade de uma avaliação profissional.',
       },
       {
-        question: 'Qual a importância de instalar DPS e DR nas instalações elétricas?',
+        question: 'Trocar lâmpadas comuns por LED realmente economiza energia?',
         answer:
-          'O DR (Dispositivo Diferencial Residual) protege pessoas contra choques elétricos graves ao desligar o circuito em milissegundos caso detecte fuga de corrente. Já o DPS (Dispositivo de Proteção contra Surtos) protege máquinas, computadores e placas eletrônicas contra descargas atmosféricas (raios) e picos da rede elétrica.',
+          'Sim! A iluminação em LED consome até 80% menos energia elétrica que lâmpadas antigas, esquenta muito menos e possui durabilidade muito superior.',
       },
       {
-        question: 'A S.A Manutenção realiza atendimento elétrico em quais cidades?',
+        question: 'Qual o perigo de usar extensões e benjamins por longos períodos?',
         answer:
-          'Nossa base operacional está em Salto – SP e atendemos com agilidade empresas, indústrias, comércios e condomínios em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
-      },
-      {
-        question: 'Como funciona a solicitação de orçamento para manutenção elétrica?',
-        answer:
-          'Basta entrar em contato pelo WhatsApp (11) 95145-9102 ou pelo formulário do site. Avaliamos sua necessidade técnica e, quando necessário, realizamos vistoria no local para apresentar um orçamento técnico detalhado e sem custo.',
+          'Extensões não foram feitas para uso contínuo de aparelhos potentes. Elas podem superaquecer e provocar derretimento ou curto-circuito. O ideal é instalar tomadas dimensionadas ou utilizar filtros de linha adequados.',
       },
     ],
-    relatedSlugs: ['manutencao-predial', 'solda-e-serralheria', 'pintura-industrial-e-comercial'],
+    relatedSlugs: ['pintura', 'encanador', 'projetos-de-restauracao'],
     seo: {
-      title: 'Manutenção Elétrica em Salto, Itu e Indaiatuba | S.A Manutenção',
+      title: 'Eletricista e Manutenção Elétrica em Salto e Região | S.A Manutenção',
       description:
-        'Manutenção elétrica industrial, predial e comercial em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Quadros QDF, NBR 5410, NR-10, instalações e reparos.',
+        'Serviços de elétrica em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Instalações, quadros QDF, iluminação LED, reparos de curto-circuito e manutenção.',
       primaryKeyword: 'Manutenção elétrica em Salto SP',
-      secondaryKeywords: [
-        'Eletricista industrial em Salto',
-        'Manutenção elétrica comercial',
-        'Montagem de quadro elétrico QDF',
-        'Manutenção elétrica em Itu e Indaiatuba',
-      ],
+      secondaryKeywords: ['Eletricista em Salto', 'Instalação elétrica comercial e residencial'],
     },
-    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Manutenção Elétrica com a S.A Manutenção.',
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Elétrica com a S.A Manutenção.',
   },
   {
-    slug: 'manutencao-predial',
+    slug: 'pintura',
     index: '02',
-    name: 'Manutenção Predial',
-    shortName: 'Conservação e Sistemas Prediais',
-    heroTitle: 'MANUTENÇÃO PREDIAL COMPLETA. UM ÚNICO RESPONSÁVEL.',
+    name: 'Pintura',
+    shortName: 'Pintura Predial, Comercial e Industrial',
+    heroTitle: 'PINTURA PROFISSIONAL COM ACABAMENTO IMPECÁVEL E DURABILIDADE',
+    heroHighlightWord: 'PINTURA',
     heroDescription:
-      'Centralizamos as principais demandas de manutenção predial em um único parceiro técnico, facilitando a rotina de síndicos, administradores e gestores de empresas.',
+      'Renove e valorize seu imóvel, comércio, condomínio ou galpão com preparação completa de superfície, tintas de qualidade e limpeza total.',
     cardSummary:
-      'Elétrica, hidráulica, reparos civis leves, checklists preventivos, inspeções prediais e relatórios técnicos centralizados em um único fornecedor.',
-    normSummary: 'Checklists Preventivos · Gestão Integrada',
+      'Pintura interna e externa, fachadas, galpões, estruturas metálicas, pisos, tratamento de trincas e aplicação com pistola airless.',
+    normSummary: 'Acabamento Fino · Airless · NR-35',
     presentationParagraphs: [
-      'Gerenciar múltiplos prestadores avulsos para cada pequeno reparo elétrico, vazamento hidráulico, ajuste estrutural ou conservação de fachada consome tempo precioso de síndicos, gestores de facilities e empresários.',
-      'A S.A Manutenção resolve esse gargalo centralizando a manutenção predial em um único fornecedor técnico estruturado. Atuamos tanto em atendimentos corretivos pontuais quanto por meio de rotinas e checklists preventivos periódicos.',
-      'Com atendimento em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba, garantimos que edifícios comerciais, condomínios, escritórios e plantas industriais permaneçam seguros, funcionais e bem conservados durante todo o ano.',
+      'Uma pintura bem executada transforma a aparência de qualquer ambiente, protege as paredes contra umidade e valoriza o patrimônio.',
+      'Na S.A Manutenção, cuidamos de todas as etapas: proteção de pisos e móveis, lixamento, correção de imperfeições com massa, tratamento anticorrosivo em metais e aplicação uniforme.',
+      'Atendemos desde salas comerciais e residências até fachadas prediais e grandes galpões em Salto e região.',
     ],
     executedServices: [
       {
-        title: 'Manutenção elétrica predial',
-        description: 'Sensores de presença, iluminação de emergência, quadros de áreas comuns, bombas, portarias e tomadas.',
-      },
-      {
-        title: 'Manutenção hidráulica',
-        description: 'Correção de vazamentos, substituição de registros, válvulas de descarga, torneiras, boias, tubulações e caixas acopladas.',
-      },
-      {
-        title: 'Reparos civis leves',
-        description: 'Recomposição de alvenaria, revestimentos, pisos, calçadas, vedações, portas, fechaduras e pequenos reparos estruturais.',
-      },
-      {
-        title: 'Manutenção de utilidades',
-        description: 'Conservação de casas de máquinas, abrigos técnicos, suportes, grelhas de drenagem e instalações de apoio.',
-      },
-      {
-        title: 'Checklists preventivos periódicos',
-        description: 'Roteiros técnicos estruturados para verificar o funcionamento de todos os sistemas críticos antes que ocorram falhas.',
-      },
-      {
-        title: 'Inspeções prediais e relatórios',
-        description: 'Diagnóstico técnico com relatório fotográfico claro para auxiliar síndicos e gestores na tomada de decisão e aprovação de melhorias.',
-      },
-      {
-        title: 'Atendimento corretivo e cronogramas',
-        description: 'Suporte rápido para demandas emergenciais do dia a dia e planejamento anual ou mensal de conservação.',
-      },
-    ],
-    applications: [
-      {
-        segment: 'Condomínios Residenciais e Comerciais',
-        detail: 'Apoio completo ao síndico e à administradora na conservação de áreas comuns, casas de bombas, garagens e portarias.',
-      },
-      {
-        segment: 'Prédios Corporativos e Escritórios',
-        detail: 'Manutenção discreta e eficiente de instalações sanitárias, iluminação, pontos de rede/energia e acabamentos.',
-      },
-      {
-        segment: 'Redes de Comércio e Varejo',
-        detail: 'Padronização e pronta resposta para manter lojas e estabelecimentos sempre apresentáveis e seguros para os clientes.',
-      },
-      {
-        segment: 'Instalações Administrativas Industriais',
-        detail: 'Conservação de vestiários, refeitórios, recepções, escritórios de fábrica e áreas externas de apoio.',
-      },
-    ],
-    technicalDifferentials: [
-      {
-        title: 'Redução de Custos com Manutenção Preventiva',
-        description: 'Identificar uma infiltração ou conexão elétrica aquecida no início evita reformas emergenciais de alto custo.',
-      },
-      {
-        title: 'Centralização em um Único Parceiro',
-        description: 'Menos burocracia com cotações fragmentadas: nossa equipe integra elétrica, hidráulica, pintura, solda e controle de pragas.',
-      },
-      {
-        title: 'Relatórios Transparentes para Gestores',
-        description: 'Documentamos o que foi inspecionado e executado, facilitando a prestação de contas em condomínios e empresas.',
-      },
-    ],
-    safetyAndNorms: {
-      title: 'Conservação Patrimonial e Segurança Operacional',
-      subtitle: 'Processos padronizados para preservar a vida útil do imóvel e a segurança dos usuários.',
-      items: [
-        'Execução planejada com isolamento e sinalização das áreas de trabalho em condomínios e ambientes com circulação de público.',
-        'Respeito aos horários e regras internas de condomínios residenciais, comerciais e centros empresariais.',
-        'Integração direta com nossas divisões de elétrica (NBR 5410), trabalho em altura (NR-35) e serralheria.',
-        'Garantia técnica formal sobre os serviços executados conforme as condições contratadas.',
-      ],
-    },
-    faqs: [
-      {
-        question: 'Por que contratar manutenção predial integrada em vez de profissionais avulsos?',
-        answer:
-          'Quando uma empresa ou condomínio depende de profissionais avulsos para elétrica, hidráulica, pintura e serralheria, perde-se tempo gerenciando agendas e garantias. Com a S.A Manutenção, você tem um único responsável técnico, atendimento padronizado e visão completa da estrutura.',
-      },
-      {
-        question: 'Vocês atendem tanto demandas pontuais quanto manutenção recorrente?',
-        answer:
-          'Sim. Atendemos desde solicitações corretivas específicas (como reparos elétricos, hidráulicos ou estruturais) até planos de acompanhamento preventivo periódico para empresas e condomínios.',
-      },
-      {
-        question: 'Como funciona o checklist preventivo para condomínios e empresas?',
-        answer:
-          'Nossa equipe realiza vistorias programadas verificando quadros elétricos, iluminação, bombas, sistemas hidráulicos, portões, estruturas metálicas e conservação geral, emitindo um relatório claro com as ações realizadas e eventuais recomendações.',
-      },
-    ],
-    relatedSlugs: ['manutencao-eletrica', 'pintura-industrial-e-comercial', 'dedetizacao-e-controle-de-pragas'],
-    seo: {
-      title: 'Manutenção Predial em Salto, Itu e Indaiatuba | S.A Manutenção',
-      description:
-        'Empresa de manutenção predial em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Elétrica, hidráulica, reparos civis e checklists preventivos para condomínios e empresas.',
-      primaryKeyword: 'Manutenção predial em Salto',
-      secondaryKeywords: [
-        'Empresa de manutenção predial',
-        'Manutenção para condomínios em Salto e Itu',
-        'Manutenção predial comercial Indaiatuba',
-        'Checklist preventivo predial',
-      ],
-    },
-    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Manutenção Predial com a S.A Manutenção.',
-  },
-  {
-    slug: 'pintura-industrial-e-comercial',
-    index: '03',
-    name: 'Pintura Industrial e Comercial',
-    shortName: 'Pintura Técnica e Anticorrosiva',
-    heroTitle: 'PROTEÇÃO, DURABILIDADE E ACABAMENTO PROFISSIONAL.',
-    heroDescription:
-      'Executamos serviços especializados de pintura industrial e comercial, oferecendo proteção e acabamento para estruturas metálicas, galpões, fachadas, pisos industriais, máquinas e áreas de grande circulação.',
-    cardSummary:
-      'Pintura de galpões, estruturas metálicas, fachadas, pisos industriais, tratamento anticorrosivo e aplicação mecanizada com pistola airless.',
-    normSummary: 'NR-35 · Airless · Tratamento Anticorrosivo',
-    presentationParagraphs: [
-      'Em ambientes industriais e comerciais, a pintura vai muito além da estética: ela é uma barreira fundamental de proteção contra corrosão, umidade, abrasão química e desgaste mecânico.',
-      'A S.A Manutenção executa serviços técnicos de pintura industrial, comercial e predial em Salto e toda a região, utilizando preparação rigorosa de superfície, tratamento anticorrosivo e equipamentos de pintura mecanizada (pistola airless) para garantir cobertura uniforme e alta produtividade.',
-      'Planejamos cada etapa da execução para minimizar interferências na rotina da sua fábrica, galpão logístico, comércio ou condomínio, contando com equipe treinada conforme NR-35 quando há necessidade de trabalho em altura.',
-    ],
-    executedServices: [
-      {
-        title: 'Pintura de estruturas metálicas',
-        description: 'Proteção de tesouras, treliças, pilares metálicos, coberturas e mezaninos com fundos anticorrosivos e acabamento de alta resistência.',
-      },
-      {
-        title: 'Pintura de galpões industriais e logísticos',
-        description: 'Renovação interna e externa de grandes metragens com alta velocidade de aplicação e excelente padrão de acabamento.',
+        title: 'Pintura interna e externa de imóveis',
+        description: 'Paredes, tetos, muros e áreas comuns com ótimo cobrimento e recorte preciso.',
       },
       {
         title: 'Pintura de fachadas comerciais e prediais',
-        description: 'Valorização visual da empresa ou condomínio com tintas elastoméricas e acrílicas resistentes às intempéries.',
+        description: 'Renovação visual que destaca sua empresa e protege contra sol e chuva.',
       },
       {
-        title: 'Pintura de pisos industriais e demarcação',
-        description: 'Aplicação de tintas de alta resistência para áreas de produção, estacionamentos, faixas de pedestres e rotas de segurança.',
+        title: 'Pintura de galpões e estruturas metálicas',
+        description: 'Aplicação mecanizada com airless e fundo anticorrosivo para máxima durabilidade.',
       },
       {
-        title: 'Pintura de máquinas e equipamentos',
-        description: 'Recuperação visual e proteção de maquinário industrial, bancadas, tubulações e estruturas operacionais.',
+        title: 'Pintura e demarcação de pisos',
+        description: 'Pisos industriais, garagens, quadras, estacionamentos e faixas de segurança.',
       },
       {
-        title: 'Preparação de superfícies e tratamento anticorrosivo',
-        description: 'Lixamento, remoção de oxidação, limpeza desengraxante, correção de trincas e aplicação de primer anticorrosivo.',
+        title: 'Preparação de superfície e reparo de trincas',
+        description: 'Raspagem, selador, massa corrida/acrílica e tratamento contra descascamento.',
       },
       {
-        title: 'Pintura mecanizada com pistola Airless',
-        description: 'Tecnologia de pulverização de alta pressão que proporciona acabamento superior e reduz drasticamente o tempo de obra.',
-      },
-      {
-        title: 'Serviços em altura conforme NR-35',
-        description: 'Execução segura em fachadas, pés-direitos elevados e coberturas com utilização de EPIs, linhas de vida e plataformas quando aplicável.',
+        title: 'Envernizamento e pintura de madeiras e ferragens',
+        description: 'Portas, janelas, portões, grades e pergolados.',
       },
     ],
     applications: [
       {
-        segment: 'Galpões Industriais e Centros Logísticos',
-        detail: 'Pintura completa para entrega ou renovação de galpões, estruturas de cobertura, docas e demarcação de piso.',
+        segment: 'Comércios e Lojas',
+        detail: 'Ambientes renovados e convidativos para atrair mais clientes.',
       },
       {
-        segment: 'Comércios, Lojas e Restaurantes',
-        detail: 'Renovação rápida de fachadas e ambientes internos com cronograma adaptado para não interromper o atendimento aos clientes.',
+        segment: 'Condomínios e Prédios',
+        detail: 'Pintura de portarias, muros, garagens, corredores e áreas de lazer.',
       },
       {
-        segment: 'Condomínios Residenciais e Empresariais',
-        detail: 'Pintura de muros, portarias, garagens, áreas comuns, grades e estruturas metálicas.',
+        segment: 'Indústrias e Galpões',
+        detail: 'Pintura de grandes metragens, estruturas de aço e pisos de alta resistência.',
       },
       {
-        segment: 'Indústrias Metalúrgicas e Manufaturas',
-        detail: 'Tratamento anticorrosivo de estruturas expostas e pintura técnica de máquinas e tubulações.',
+        segment: 'Residências e Escritórios',
+        detail: 'Execução organizada com proteção completa do mobiliário e entrega limpa.',
       },
     ],
     technicalDifferentials: [
       {
-        title: 'Preparação Rigorosa da Base',
-        description: 'A durabilidade da pintura depende da preparação: tratamos ferrugem, umidade e imperfeições antes de aplicar o acabamento.',
+        title: 'Cuidado com a Limpeza',
+        description: 'Isolamos pisos, esquadrias e móveis com lona e fita antes de iniciar a pintura.',
       },
       {
-        title: 'Produtividade com Sistema Airless',
-        description: 'Cobrimos grandes áreas de galpões e estruturas metálicas em menos tempo e com camada de tinta uniforme.',
+        title: 'Preparação Completa da Parede',
+        description: 'Corrigimos imperfeições e umidade para que a pintura não descasque precocemente.',
       },
       {
-        title: 'Organização e Limpeza no Canteiro',
-        description: 'Isolamento cuidadoso de máquinas, pisos e mobiliário para entregar o ambiente limpo ao término do serviço.',
+        title: 'Agilidade no Prazo',
+        description: 'Equipe organizada e equipamentos modernos para cumprir o cronograma combinado.',
       },
     ],
     safetyAndNorms: {
-      title: 'Segurança em Altura (NR-35) e Proteção Ambiental',
-      subtitle: 'Planejamento técnico para execução segura em áreas industriais e comerciais.',
+      title: 'Qualidade de Aplicação e Segurança NR-35',
+      subtitle: 'Execução segura tanto em áreas internas quanto em trabalhos em altura.',
       items: [
-        'Profissionais capacitados conforme diretrizes da NR-35 para serviços executados acima de 2 metros de altura.',
-        'Uso rigoroso de cintos tipo paraquedista, talabartes duplos, trava-quedas, óculos de proteção e respiradores adequados.',
-        'Isolamento e sinalização da área abaixo do ponto de intervenção para proteção de colaboradores e visitantes.',
-        'Especificação correta de materiais de acordo com o substrato (alvenaria, aço carbono, galvanizado ou concreto).',
+        'Equipe capacitada para trabalhos em altura (NR-35) em fachadas e pés-direitos altos.',
+        'Uso de materiais e tintas adequados para cada tipo de superfície.',
+        'Isolamento e sinalização do local durante toda a execução.',
+        'Acabamento revisado junto ao cliente na entrega.',
       ],
     },
     faqs: [
       {
-        question: 'Qual a vantagem da pintura com pistola Airless em galpões e estruturas?',
+        question: 'Vocês protegem os móveis e o piso antes de pintar?',
         answer:
-          'O sistema Airless aplica a tinta sob alta pressão sem misturar ar, garantindo uma película muito mais uniforme, melhor aderência em estruturas metálicas e alvenaria, além de uma execução muito mais rápida que o método convencional.',
+          'Sim! Antes de abrir qualquer lata de tinta, fazemos o envelopamento e proteção de pisos, rodapés, tomadas, portas e móveis.',
       },
       {
-        question: 'Vocês fazem o tratamento de ferrugem antes de pintar estruturas metálicas?',
+        question: 'Fazem correção de rachaduras e descascados na parede?',
         answer:
-          'Sim. Nunca aplicamos tinta diretamente sobre ferrugem solta. Realizamos a preparação mecânica/lixamento da superfície e a aplicação de fundo anticorrosivo adequado para bloquear o avanço da oxidação.',
-      },
-      {
-        question: 'É possível realizar a pintura sem parar a operação da empresa?',
-        answer:
-          'Sim. Planejamos o isolamento por setores e alinhamos o cronograma de execução com a gestão do cliente para reduzir ao máximo qualquer interferência na rotina produtiva ou comercial.',
+          'Com certeza. Raspamos as partes soltas, aplicamos fundo preparador e corrigimos trincas e buracos antes das demãos de tinta.',
       },
     ],
-    relatedSlugs: ['solda-e-serralheria', 'manutencao-predial', 'manutencao-eletrica'],
+    relatedSlugs: ['projetos-de-restauracao', 'serralheria', 'marcenaria'],
     seo: {
-      title: 'Pintura Industrial e Comercial em Salto e Região | S.A Manutenção',
+      title: 'Serviços de Pintura Comercial, Predial e Industrial em Salto | S.A Manutenção',
       description:
-        'Pintura industrial e comercial em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Pintura de galpões, estruturas metálicas, pisos industriais, fachadas e NR-35.',
-      primaryKeyword: 'Pintura industrial em Salto e região',
-      secondaryKeywords: [
-        'Pintura de galpão industrial Salto',
-        'Pintura de estruturas metálicas Itu',
-        'Pintura comercial em Indaiatuba',
-        'Pintura com airless e tratamento anticorrosivo',
-      ],
+        'Pintura profissional em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Fachadas, interiores, galpões, estruturas metálicas e pisos.',
+      primaryKeyword: 'Pintura em Salto SP',
+      secondaryKeywords: ['Pintor profissional Salto', 'Pintura comercial e industrial'],
     },
-    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Pintura Industrial / Comercial com a S.A Manutenção.',
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Pintura com a S.A Manutenção.',
   },
   {
-    slug: 'solda-e-serralheria',
+    slug: 'serralheria',
+    index: '03',
+    name: 'Serralheria',
+    shortName: 'Solda, Portões e Estruturas Metálicas',
+    heroTitle: 'SERRALHERIA E SOLDA COM RESISTÊNCIA E ACABAMENTO DE PRECISÃO',
+    heroHighlightWord: 'SERRALHERIA',
+    heroDescription:
+      'Fabricação, conserto e reforço de portões, grades, corrimãos, mezaninos e estruturas metálicas com solda MIG/MAG e elétrica.',
+    cardSummary:
+      'Conserto e fabricação de portões, grades de segurança, guarda-corpos, escadas, mezaninos, suportes e solda técnica em geral.',
+    normSummary: 'Solda MIG/MAG · Portões · Estruturas',
+    presentationParagraphs: [
+      'Um portão travando, uma grade enferrujada ou uma estrutura metálica precisando de reforço comprometem a segurança e a praticidade do dia a dia.',
+      'A S.A Manutenção oferece serviços completos de serralheria e solda diretamente no local ou sob medida, atendendo condomínios, empresas, indústrias e residências.',
+      'Além da solda e do ajuste mecânico, já podemos entregar sua estrutura pintada e protegida contra ferrugem.',
+    ],
+    executedServices: [
+      {
+        title: 'Manutenção e reforma de portões',
+        description: 'Troca de roldanas, cabos de aço, trilhos, dobradiças, alinhamento e solda de trincas.',
+      },
+      {
+        title: 'Fabricação de grades, corrimãos e guarda-corpos',
+        description: 'Proteção sob medida para escadas, sacadas, janelas e áreas externas.',
+      },
+      {
+        title: 'Solda MIG/MAG e solda elétrica no local',
+        description: 'Reparos rápidos e resistentes em estruturas metálicas, suportes e peças.',
+      },
+      {
+        title: 'Estruturas metálicas, coberturas e mezaninos',
+        description: 'Execução e reforço estrutural para ampliação de espaço em comércios e galpões.',
+      },
+      {
+        title: 'Bases, bancadas e suportes para equipamentos',
+        description: 'Suportes para ar-condicionado, motores, caixas d’água e bancadas de trabalho.',
+      },
+      {
+        title: 'Recuperação de ferragens oxidadas',
+        description: 'Substituição de partes corroídas, acabamento esmerilhado e pintura anticorrosiva.',
+      },
+    ],
+    applications: [
+      {
+        segment: 'Condomínios e Residências',
+        detail: 'Conserto rápido de portões de garagem, grades, lixeiras, corrimãos e coberturas.',
+      },
+      {
+        segment: 'Comércios e Lojas',
+        detail: 'Grades de proteção, portas metálicas, estruturas para placas e fachadas.',
+      },
+      {
+        segment: 'Indústrias e Galpões',
+        detail: 'Mezaninos, guarda-corpos, bases de máquinas, portões pesados e solda estrutural.',
+      },
+      {
+        segment: 'Projetos Sob Medida',
+        detail: 'Estruturas metálicas combinadas com marcenaria e pintura.',
+      },
+    ],
+    technicalDifferentials: [
+      {
+        title: 'Atendimento Móvel no Local',
+        description: 'Levamos equipamentos de solda e corte até seu imóvel para reparos imediatos.',
+      },
+      {
+        title: 'Entrega com Pintura Protetiva',
+        description: 'Sua peça ou portão já fica tratado com fundo anticorrosivo e pintado.',
+      },
+      {
+        title: 'Solda Limpa e Segura',
+        description: 'Cordões de solda firmes, bem acabados e sem rebarbas.',
+      },
+    ],
+    safetyAndNorms: {
+      title: 'Segurança Estrutural e Proteção no Trabalho a Quente',
+      subtitle: 'Cuidado total com o ambiente durante cortes e soldagens.',
+      items: [
+        'Isolamento da área contra faíscas e respingos de solda.',
+        'Uso completo de EPIs (máscara de escurecimento, luvas de raspa e proteção).',
+        'Dimensionamento seguro de perfis e chapas metálicas.',
+        'Acabamento lixado e protegido contra oxidação.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Vocês consertam portão de garagem no próprio local?',
+        answer:
+          'Sim! Levamos máquina de solda e ferramentas até o condomínio, empresa ou residência para consertar trincas, dobradiças, trilhos e roldanas rapidamente.',
+      },
+      {
+        question: 'Vocês também pintam o portão ou grade depois do serviço de serralheria?',
+        answer:
+          'Sim! Como temos a especialidade de Pintura integrada, entregamos o serviço completo: soldado, lixado, com fundo anticorrosivo e pintado.',
+      },
+    ],
+    relatedSlugs: ['pintura', 'marcenaria', 'projetos-de-restauracao'],
+    seo: {
+      title: 'Serralheria e Solda em Salto, Itu e Indaiatuba | S.A Manutenção',
+      description:
+        'Serviços de serralheria, conserto de portões, grades, estruturas metálicas e solda MIG/MAG em Salto e região. Solicite orçamento pelo WhatsApp.',
+      primaryKeyword: 'Serralheria em Salto SP',
+      secondaryKeywords: ['Conserto de portões em Salto', 'Soldador em Salto e Itu'],
+    },
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Serralheria com a S.A Manutenção.',
+  },
+  {
+    slug: 'marcenaria',
     index: '04',
-    name: 'Solda e Serralheria',
-    shortName: 'Estruturas Metálicas e Solda',
-    heroTitle: 'SOLDA E MANUTENÇÃO DE ESTRUTURAS METÁLICAS.',
+    name: 'Marcenaria',
+    shortName: 'Móveis, Portas, Reparos e Madeira',
+    heroTitle: 'MARCENARIA, AJUSTES E CONSERVAÇÃO DE ESTRUTURAS EM MADEIRA',
+    heroHighlightWord: 'MARCENARIA',
     heroDescription:
-      'Executamos serviços de solda, fabricação, recuperação e manutenção de estruturas metálicas para aplicações industriais, comerciais e prediais.',
+      'Instalação, reparo, ajuste e restauração de portas, armários, balcões, painéis, decks e estruturas em madeira para ambientes comerciais e residenciais.',
     cardSummary:
-      'Solda MIG/MAG e elétrica, fabricação e reforço de mezaninos, bases para máquinas, recuperação de peças e manutenção de portões e grades.',
-    normSummary: 'Solda MIG/MAG · Eletrodo · Estrutural',
+      'Ajuste e instalação de portas, fechaduras, dobradiças, reparos em móveis e armários, decks, pergolados e soluções sob medida em madeira.',
+    normSummary: 'Portas e Móveis · Ajustes · Acabamento em Madeira',
     presentationParagraphs: [
-      'Estruturas metálicas exigem precisão dimensional, penetração de solda adequada e resistência mecânica comprovada. Desde o reforço estrutural de um mezanino até a fabricação de suportes para máquinas ou recuperação de portões industriais, o trabalho metalúrgico não admite improvisos.',
-      'A S.A Manutenção oferece serviços especializados de solda (MIG/MAG e solda elétrica) e serralheria técnica para indústrias, galpões, condomínios e estabelecimentos comerciais em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
-      'Além da fabricação e do reparo estrutural, integramos o acabamento de pintura anticorrosiva e, quando necessário, a infraestrutura elétrica para automação ou iluminação da estrutura entregue.',
+      'Portas raspando no chão, armários com dobradiças soltas, gavetas emperradas ou balcões comerciais desgastados prejudicam a funcionalidade e a estética do ambiente.',
+      'A S.A Manutenção conta com serviço especializado de marcenaria para realizar desde pequenos reparos e regulagens até confecção de complementos, instalação de portas, rodapés, painéis e revitalização de madeiras.',
+      'Unimos a marcenaria às nossas equipes de serralheria, elétrica e pintura para entregar soluções completas em um só atendimento.',
     ],
     executedServices: [
       {
-        title: 'Solda MIG/MAG',
-        description: 'Soldagem de alta produtividade, excelente penetração e cordão uniforme para estruturas metálicas, chapas e perfis industriais.',
+        title: 'Instalação e ajuste de portas e batentes',
+        description: 'Regulagem de portas emperradas, troca de batentes, guarnições, vistas e fechaduras.',
       },
       {
-        title: 'Solda elétrica (Eletrodo Revestido)',
-        description: 'Reparos estruturais em campo, soldagem de perfis pesados, uniões de alta resistência e intervenções em locais de difícil acesso.',
+        title: 'Reparo e manutenção de armários e móveis',
+        description: 'Substituição de dobradiças, corrediças telescópicas, puxadores, prateleiras e portas de correr.',
       },
       {
-        title: 'Fabricação de estruturas metálicas',
-        description: 'Desenvolvimento sob medida de coberturas, fechamentos, escadas marinheiro, guarda-corpos, corrimãos e proteções.',
+        title: 'Balcões, divisórias e mobiliário comercial',
+        description: 'Adequação, montagem e reforma de balcões de atendimento, expositores e estações de trabalho.',
       },
       {
-        title: 'Manutenção de portões e grades',
-        description: 'Recuperação de portões basculantes, deslizantes e pivotantes, troca de roldanas, cabos de aço, gonzo, trilhos e reforço de grades.',
+        title: 'Manutenção de decks, pergolados e painéis',
+        description: 'Substituição de réguas danificadas, lixamento, tratamento e aplicação de verniz ou stain.',
       },
       {
-        title: 'Fabricação e reforço de mezaninos',
-        description: 'Execução e reforço estrutural de mezaninos metálicos para ampliação de área útil de estoque ou escritório.',
+        title: 'Instalação de rodapés, pisos laminados e forros',
+        description: 'Acabamento preciso em madeira e derivados para escritórios, lojas e residências.',
       },
       {
-        title: 'Bases e suportes para máquinas',
-        description: 'Confecção de bancadas industriais, skids, suportes de tubulação, bases para motores, compressores e climatizadores.',
-      },
-      {
-        title: 'Recuperação de peças e componentes',
-        description: 'Reconstrução de elementos metálicos trincados ou desgastados por uso severo na operação industrial ou logística.',
-      },
-      {
-        title: 'Corte, ajuste e acabamento técnico',
-        description: 'Esmerilhamento, alinhamento, furação, ajuste mecânico em campo e preparação para pintura protetiva.',
+        title: 'Restauração de peças e estruturas de madeira',
+        description: 'Recuperação estética e estrutural de portas maciças, bancadas, mesas e estruturas.',
       },
     ],
     applications: [
       {
-        segment: 'Indústrias e Linhas de Produção',
-        detail: 'Bases de máquinas, bancadas de trabalho, guarda-corpos de segurança, suportes técnicos e reparos de emergência em estruturas.',
+        segment: 'Empresas e Escritórios',
+        detail: 'Manutenção de portas corporativas, estações de trabalho, armários e divisórias.',
       },
       {
-        segment: 'Galpões e Centros de Distribuição',
-        detail: 'Reforço de mezaninos, protetores de porta-paletes (guard-rails), manutenção de docas, portões industriais e fechamentos.',
+        segment: 'Comércios e Restaurantes',
+        detail: 'Conservação de balcões, mesas, painéis decorativos e portas de acesso.',
       },
       {
-        segment: 'Condomínios Residenciais e Comerciais',
-        detail: 'Reforma e manutenção corretiva/preventiva de portões veiculares, grades perimetrais, lixeiras, alçapões e corrimãos.',
+        segment: 'Condomínios e Residências',
+        detail: 'Regulagem de portas, fechaduras, móveis planejados, decks e áreas gourmet.',
       },
       {
-        segment: 'Comércios e Estabelecimentos',
-        detail: 'Estruturas para fachadas, suportes de equipamentos técnicos, grades de segurança e adequações de layout.',
+        segment: 'Projetos de Restauração',
+        detail: 'Recuperação de madeiramento, esquadrias e peças especiais.',
       },
     ],
     technicalDifferentials: [
       {
-        title: 'Resistência Estrutural e Acabamento',
-        description: 'Cordões de solda executados com técnica apurada, esmerilhamento limpo e alinhamento preciso dos perfis metálicos.',
+        title: 'Ferramental Preciso',
+        description: 'Cortes, nivelamentos e encaixes limpos sem danificar o restante do móvel ou parede.',
       },
       {
-        title: 'Integração com Pintura Anticorrosiva',
-        description: 'Entregamos a estrutura soldada já tratada e pintada, evitando que o aço recém-trabalhado sofra oxidação precoce.',
+        title: 'Solução Completa (Madeira + Verniz + Ferragem)',
+        description: 'Resolvemos a parte estrutural da madeira, as ferragens e o acabamento em verniz ou laca.',
       },
       {
-        title: 'Atendimento em Campo (In Loco)',
-        description: 'Levamos equipamentos de solda e corte até sua indústria, comércio ou condomínio para reparos rápidos no próprio local.',
+        title: 'Atendimento para Pequenos e Médios Reparos',
+        description: 'Você não precisa ficar com portas ou armários quebrados por falta de marceneiro que atenda manutenção.',
       },
     ],
     safetyAndNorms: {
-      title: 'Procedimentos Seguros de Trabalho a Quente',
-      subtitle: 'Controle rigoroso de faíscas, proteção coletiva e EPIs específicos para soldagem.',
+      title: 'Qualidade de Acabamento e Preservação da Madeira',
+      subtitle: 'Técnicas adequadas para garantir durabilidade e funcionamento suave.',
       items: [
-        'Avaliação prévia do entorno para remoção ou isolamento de materiais inflamáveis antes de iniciar serviços a quente.',
-        'Utilização completa de EPIs: máscara de solda com escurecimento automático, avental e luvas de raspa, perneiras e proteção respiratória.',
-        'Verificação de aterramento correto da máquina de solda para não interferir em redes elétricas ou equipamentos sensíveis do cliente.',
-        'Acabamento sem rebarbas cortantes e inspeção visual rigorosa de todas as uniões soldadas.',
+        'Utilização de ferragens (dobradiças, corrediças e fechaduras) de alta durabilidade.',
+        'Proteção contra cupins e umidade em conjunto com nossas outras especialidades.',
+        'Organização e aspiração de serragem ao final do atendimento.',
+        'Alinhamento e nivelamento conferidos em cada porta ou móvel.',
       ],
     },
     faqs: [
       {
-        question: 'Qual a diferença entre a solda MIG/MAG e a solda elétrica nos serviços da S.A Manutenção?',
+        question: 'Vocês atendem chamados para consertar portas e armários que estão desalinhados?',
         answer:
-          'A solda MIG/MAG utiliza gás de proteção e alimentação contínua de arame, proporcionando excelente acabamento visual, baixa emissão de respingos e alta velocidade. Já a solda elétrica por eletrodo revestido é extremamente versátil e robusta para reparos estruturais pesados em campo e ambientes externos.',
+          'Sim! Muitas vezes um armário ou porta não precisa ser trocado: fazemos a substituição de dobradiças, corrediças, colagem, reforço e alinhamento completo.',
       },
       {
-        question: 'Vocês fazem manutenção de portões pesados de condomínios e indústrias?',
+        question: 'Vocês também fazem envernizamento de portas e decks de madeira?',
         answer:
-          'Sim. Realizamos solda de trincas estruturais, substituição de roldanas, cabos de aço, trilhos, dobradiças e reforço de folhas metálicas em portões de condomínios, comércios e galpões.',
-      },
-      {
-        question: 'A estrutura metálica já pode ser entregue pintada?',
-        answer:
-          'Com certeza. Como atuamos de forma integrada também em Pintura Industrial e Comercial, podemos entregar sua estrutura metálica fabricada, soldada, tratada contra corrosão e devidamente pintada.',
+          'Sim. Fazemos o lixamento técnico da madeira e aplicamos verniz marítimo, stain ou pintura para devolver a beleza e proteger contra sol e chuva.',
       },
     ],
-    relatedSlugs: ['pintura-industrial-e-comercial', 'manutencao-eletrica', 'manutencao-predial'],
+    relatedSlugs: ['projetos-de-restauracao', 'pintura', 'serralheria'],
     seo: {
-      title: 'Serviços de Solda e Serralheria em Salto SP e Região | S.A Manutenção',
+      title: 'Marcenaria e Reparos em Madeira em Salto e Região | S.A Manutenção',
       description:
-        'Solda MIG/MAG, solda elétrica, fabricação e manutenção de estruturas metálicas, mezaninos e portões em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
-      primaryKeyword: 'Serviços de solda em Salto SP',
-      secondaryKeywords: [
-        'Manutenção de estruturas metálicas Salto',
-        'Solda MIG MAG industrial Itu',
-        'Serralheria industrial e comercial Indaiatuba',
-        'Manutenção de portões e mezaninos',
-      ],
+        'Serviços de marcenaria em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Instalação e ajuste de portas, reparo de móveis, decks, pergolados e restauração.',
+      primaryKeyword: 'Marcenaria em Salto SP',
+      secondaryKeywords: ['Conserto de móveis e portas em Salto', 'Marceneiro manutenção'],
     },
-    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Solda e Serralheria com a S.A Manutenção.',
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Marcenaria com a S.A Manutenção.',
   },
   {
-    slug: 'dedetizacao-e-controle-de-pragas',
+    slug: 'encanador',
     index: '05',
-    name: 'Dedetização e Controle de Pragas',
-    shortName: 'Controle Integrado de Pragas',
-    heroTitle: 'CONTROLE DE PRAGAS PARA AMBIENTES SEGUROS E PROTEGIDOS.',
+    name: 'Encanador',
+    shortName: 'Hidráulica, Vazamentos e Encanamento',
+    heroTitle: 'ENCANADOR PROFISSIONAL PARA INSTALAÇÕES E REPAROS HIDRÁULICOS',
+    heroHighlightWord: 'ENCANADOR',
     heroDescription:
-      'Oferecemos soluções de controle de pragas para ambientes comerciais, condomínios, restaurantes e instalações industriais.',
+      'Solução rápida e limpa para vazamentos, infiltrações, troca de registros, torneiras, válvulas, caixas d’água e tubulações de água e esgoto.',
     cardSummary:
-      'Controle de insetos rasteiros e voadores, desratização, descupinização, aplicação de produtos regularizados pela ANVISA e emissão de certificado conforme serviço.',
-    normSummary: 'Produtos Regularizados ANVISA · Laudo e Certificado',
+      'Caça e reparo de vazamentos, troca de registros e válvulas, manutenção de caixas d’água, desentupimento leve e instalações hidráulicas completas.',
+    normSummary: 'Zero Vazamentos · Água Fria/Quente · Esgoto',
     presentationParagraphs: [
-      'A presença de pragas urbanas em empresas, restaurantes, condomínios ou indústrias representa um grave risco sanitário, além de causar danos a estoques, cabos elétricos e à reputação do estabelecimento.',
-      'A S.A Manutenção realiza o controle técnico de pragas urbanas em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba, atuando no combate e na prevenção de insetos rasteiros, insetos voadores, roedores e cupins.',
-      'Utilizamos exclusivamente produtos saneantes devidamente regularizados perante a ANVISA, aplicando técnicas seguras (pulverização localizada, gel, iscagem monitorada e barreiras químicas) e fornecendo orientações preventivas, laudos e certificados de execução conforme o serviço contratado.',
+      'Um pequeno vazamento oculto ou uma válvula desregulada pode multiplicar o valor da conta de água e causar infiltrações que estragam pinturas, móveis e estruturas.',
+      'Com o serviço de Encanador da S.A Manutenção, você resolve problemas hidráulicos com agilidade e garantia. E o melhor: caso seja necessário abrir a parede para reparar um cano, nossa própria equipe faz o fechamento civil e a pintura do local!',
+      'Atendemos residências, condomínios, restaurantes, comércios e indústrias em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
     ],
     executedServices: [
       {
-        title: 'Controle de insetos rasteiros',
-        description: 'Desinsetização técnica contra baratas, formigas, aranhas, escorpiões, traças e pulgas em áreas internas, ralos, caixas de passagem e perímetros.',
+        title: 'Identificação e reparo de vazamentos',
+        description: 'Correção de vazamentos em tubulações embutidas ou aparentes, conexões, sifões e engates.',
       },
       {
-        title: 'Controle de insetos voadores',
-        description: 'Manejo técnico para redução e controle de moscas, mosquitos e pernilongos em áreas comerciais, alimentícias e industriais.',
+        title: 'Troca e reparo de registros e válvulas de descarga',
+        description: 'Substituição de reparos de válvulas Hydra/caixas acopladas e registros que não fecham.',
+      },
+      {
+        title: 'Instalação de torneiras, louças e metais sanitários',
+        description: 'Vasos sanitários, cubas, pias, lavatórios, duchas, filtros e purificadores.',
+      },
+      {
+        title: 'Manutenção e limpeza de caixas d’água',
+        description: 'Troca de boias, flanges, registros de esfera e higienização periódica.',
+      },
+      {
+        title: 'Redes de água fria, esgoto e águas pluviais',
+        description: 'Ampliação de pontos de água, instalação de calhas, ralos, grelhas e caixas de gordura.',
+      },
+      {
+        title: 'Reparo completo (Hidráulica + Acabamento)',
+        description: 'Consertamos a tubulação e já entregamos a parede ou piso refeito e pintado.',
+      },
+    ],
+    applications: [
+      {
+        segment: 'Condomínios e Residências',
+        detail: 'Eliminação de vazamentos, manutenção de barriletes, caixas d’água e banheiros.',
+      },
+      {
+        segment: 'Restaurantes e Comércios',
+        detail: 'Pias industriais, caixas de gordura, torneiras profissionais e sanitários de clientes.',
+      },
+      {
+        segment: 'Empresas e Escritórios',
+        detail: 'Manutenção preventiva em banheiros coletivos e copas para evitar desperdício de água.',
+      },
+      {
+        segment: 'Galpões e Indústrias',
+        detail: 'Redes de utilidades, vestiários, drenagem pluvial e pontos de abastecimento.',
+      },
+    ],
+    technicalDifferentials: [
+      {
+        title: 'Não Deixamos Parede Aberta',
+        description: 'Diferente de um encanador avulso, nós mesmos fechamos a alvenaria, assentamos o revestimento e pintamos.',
+      },
+      {
+        title: 'Economia na Conta de Água',
+        description: 'Eliminamos vazamentos silenciosos em descargas, boias e registros.',
+      },
+      {
+        title: 'Atendimento Ágil pelo WhatsApp',
+        description: 'Resposta rápida para emergências hidráulicas que não podem esperar.',
+      },
+    ],
+    safetyAndNorms: {
+      title: 'Estanqueidade Testada e Materiais de Primeira Linha',
+      subtitle: 'Conexões firmes e vedadas para evitar retrabalho.',
+      items: [
+        'Teste de pressão e estanqueidade antes de fechar qualquer reparo embutido.',
+        'Uso de conexões, vedações e adesivos plásticos de qualidade comprovada.',
+        'Integração segura quando há pontos elétricos próximos (chuveiros, torneiras elétricas e bombas).',
+        'Limpeza e organização do ambiente após o serviço.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Se precisar quebrar a parede para consertar o cano, vocês mesmos fecham e pintam?',
+        answer:
+          'Sim! Essa é uma das maiores vantagens da S.A Manutenção: você não precisa contratar um encanador, depois um pedreiro e depois um pintor. Nossa equipe entrega tudo pronto.',
+      },
+      {
+        question: 'Vocês consertam descarga vazando e caixa acoplada?',
+        answer:
+          'Sim. Trocamos o reparo interno de válvulas de parede e mecanismos de caixas acopladas, eliminando o desperdício contínuo de água.',
+      },
+    ],
+    relatedSlugs: ['eletrica', 'pintura', 'dedetizacao'],
+    seo: {
+      title: 'Encanador e Manutenção Hidráulica em Salto e Região | S.A Manutenção',
+      description:
+        'Encanador profissional em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Conserto de vazamentos, registros, descargas, caixas d’água e instalações hidráulicas.',
+      primaryKeyword: 'Encanador em Salto SP',
+      secondaryKeywords: ['Manutenção hidráulica em Salto', 'Conserto de vazamento Itu e Indaiatuba'],
+    },
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Encanador / Hidráulica com a S.A Manutenção.',
+  },
+  {
+    slug: 'dedetizacao',
+    index: '06',
+    name: 'Dedetização',
+    shortName: 'Controle de Pragas e Sanitização',
+    heroTitle: 'DEDETIZAÇÃO E CONTROLE DE PRAGAS PARA AMBIENTES PROTEGIDOS',
+    heroHighlightWord: 'DEDETIZAÇÃO',
+    heroDescription:
+      'Elimine baratas, formigas, escorpiões, mosquitos, roedores e cupins com produtos regularizados pela ANVISA, segurança total e certificado.',
+    cardSummary:
+      'Desinsetização, desratização e descupinização para residências, restaurantes, condomínios, comércios e indústrias com emissão de certificado.',
+    normSummary: 'Produtos Regularizados ANVISA · Certificado',
+    presentationParagraphs: [
+      'Manter sua casa, condomínio, restaurante ou empresa livre de pragas é essencial para a saúde, higiene e tranquilidade de todos.',
+      'A S.A Manutenção realiza serviços técnicos de dedetização (controle de insetos rasteiros e voadores), desratização e controle de cupins em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba.',
+      'Utilizamos produtos regularizados perante a ANVISA e, por sermos especialistas em manutenção e marcenaria, também orientamos e executamos a vedação de frestas, ralos e caixas de passagem.',
+    ],
+    executedServices: [
+      {
+        title: 'Controle de insetos rasteiros (Desinsetização)',
+        description: 'Combate eficaz a baratas, formigas, aranhas, escorpiões, pulgas e traças.',
       },
       {
         title: 'Controle de roedores (Desratização)',
-        description: 'Implementação estratégica de porta-iscas seguros e bloqueio de focos de infestação em depósitos, áreas externas, forros e perímetros.',
+        description: 'Iscagem monitorada e segura em áreas externas, depósitos, forros e perímetros.',
       },
       {
         title: 'Controle de cupins (Descupinização)',
-        description: 'Tratamento localizado e barreira protetiva para preservação de estruturas de madeira, mobiliário, arquivos e esquadrias.',
+        description: 'Proteção e tratamento para portas, telhados, móveis de madeira e estruturas.',
       },
       {
-        title: 'Aplicação de produtos regularizados',
-        description: 'Uso exclusivo de defensivos domissanitários registrados na ANVISA, selecionados conforme a praga-alvo e o tipo de ambiente.',
+        title: 'Controle de insetos voadores',
+        description: 'Redução de moscas, mosquitos e pernilongos em áreas comerciais e residenciais.',
       },
       {
-        title: 'Orientações preventivas e barreiras físicas',
-        description: 'Como também somos especialistas em manutenção predial, identificamos frestas, ralos sem tela e falhas físicas que facilitam o acesso de pragas.',
+        title: 'Aplicação em gel (sem cheiro) e pulverização',
+        description: 'Técnicas adequadas para cozinhas, restaurantes, escritórios e locais movimentados.',
       },
       {
-        title: 'Laudos e certificados de execução',
-        description: 'Emissão de documentação comprobatória de execução do serviço, conforme escopo e periodicidade contratados pelo cliente.',
+        title: 'Emissão de laudo e certificado de execução',
+        description: 'Documentação comprobatória conforme o serviço contratado.',
       },
     ],
     applications: [
       {
-        segment: 'Restaurantes, Padarias e Setor Alimentício',
-        detail: 'Controle rigoroso e programado com aplicação em gel e técnicas sem odor onde necessário, mais emissão de certificado conforme serviço contratado.',
+        segment: 'Restaurantes, Padarias e Comércios',
+        detail: 'Proteção sanitária contínua com certificado de execução e aplicação programada.',
       },
       {
-        segment: 'Condomínios Residenciais e Comerciais',
-        detail: 'Tratamento de caixas de gordura, esgoto, áreas comuns, jardins, lixeiras e subsolos para proteção coletiva dos moradores e usuários.',
+        segment: 'Condomínios e Residências',
+        detail: 'Aplicação segura em ralos, caixas de esgoto, jardins e áreas internas.',
       },
       {
-        segment: 'Indústrias, Galpões e Estoques',
-        detail: 'Proteção de matérias-primas, embalagens e painéis elétricos contra danos causados por roedores e insetos.',
+        segment: 'Indústrias e Galpões de Estoque',
+        detail: 'Barreiras químicas e porta-iscas para proteger mercadorias e fiações.',
       },
       {
-        segment: 'Comércios, Escritórios e Clínicas',
-        detail: 'Ambientes higienizados, livres de pragas e seguros para colaboradores e clientes.',
+        segment: 'Proteção de Madeiras e Móveis',
+        detail: 'Descupinização integrada com nosso serviço de Marcenaria e Restauração.',
       },
     ],
     technicalDifferentials: [
       {
-        title: 'Visão Integrada com Manutenção Predial',
-        description: 'Não apenas aplicamos o produto: orientamos e podemos executar a vedação de frestas, ralos e passagens estruturais.',
+        title: 'Produtos Regularizados ANVISA',
+        description: 'Segurança comprovada e orientação clara sobre cuidados antes e após a aplicação.',
       },
       {
-        title: 'Produtos Regularizados perante a ANVISA',
-        description: 'Segurança técnica com formulações profissionais de eficácia comprovada e baixo impacto para o ambiente tratado.',
+        title: 'Vedação de Acessos Físicos',
+        description: 'Além de dedetizar, podemos instalar grelhas com fecho e vedar frestas estruturais.',
       },
       {
-        title: 'Atendimento Programado e Discreto',
-        description: 'Agendamos a aplicação em horários compatíveis com o funcionamento do seu restaurante, comércio, condomínio ou indústria.',
+        title: 'Agendamento Flexível',
+        description: 'Atendemos em horários que não atrapalhem o funcionamento do seu comércio.',
       },
     ],
     safetyAndNorms: {
-      title: 'Segurança Sanitária e Produtos Regularizados ANVISA',
-      subtitle: 'Cuidado absoluto antes, durante e após a aplicação em ambientes corporativos e condominiais.',
+      title: 'Conformidade Sanitária e Produtos ANVISA',
+      subtitle: 'Proteção eficiente com responsabilidade técnica.',
       items: [
-        'Utilização exclusiva de produtos domissanitários devidamente registrados e autorizados pela ANVISA.',
-        'Orientação prévia e pós-aplicação clara sobre tempo de reentrada, ventilação e limpeza das áreas tratadas.',
-        'Uso de porta-iscas resistentes e identificados para controle de roedores, prevenindo o acesso acidental.',
-        'Emissão de certificado e relatório técnico de execução conforme as condições do serviço contratado.',
+        'Uso exclusivo de domissanitários registrados na ANVISA.',
+        'Porta-iscas travados para segurança em locais com circulação.',
+        'Orientação completa sobre tempo de ventilação e reentrada.',
+        'Certificado de execução conforme condições contratadas.',
       ],
     },
     faqs: [
       {
-        question: 'Os produtos utilizados na dedetização são autorizados pela ANVISA?',
+        question: 'Vocês emitem certificado de dedetização para comércios e condomínios?',
         answer:
-          'Sim. Trabalhamos exclusivamente com produtos domissanitários regularizados perante a ANVISA, aplicados por profissionais treinados e com os EPIs exigidos.',
+          'Sim! Emitimos o certificado e laudo de execução conforme o serviço contratado.',
       },
       {
-        question: 'Vocês emitem certificado após o controle de pragas?',
+        question: 'Se minha porta ou móvel estiver com cupim, vocês tratam e também restauram a madeira?',
         answer:
-          'Sim. Emitimos laudos e certificados de execução conforme o serviço contratado, documento essencial para comércios, restaurantes, empresas e condomínios.',
-      },
-      {
-        question: 'Preciso fechar minha empresa ou restaurante por muito tempo para dedetizar?',
-        answer:
-          'Não necessariamente. Avaliamos o tipo de ambiente e a praga-alvo para definir a metodologia mais adequada (como aplicação em gel inodoro ou pulverização em horários de fechamento), minimizando o impacto na sua rotina.',
+          'Sim! Fazemos a descupinização completa e nossa equipe de Marcenaria e Projetos de Restauração pode recuperar ou substituir as partes afetadas.',
       },
     ],
-    relatedSlugs: ['manutencao-predial', 'manutencao-eletrica', 'pintura-industrial-e-comercial'],
+    relatedSlugs: ['marcenaria', 'encanador', 'projetos-de-restauracao'],
     seo: {
-      title: 'Dedetização e Controle de Pragas em Salto SP e Região | S.A Manutenção',
+      title: 'Dedetização e Controle de Pragas em Salto e Região | S.A Manutenção',
       description:
-        'Dedetização e controle de pragas em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Produtos regularizados ANVISA para empresas, restaurantes, condomínios e indústrias.',
-      primaryKeyword: 'Controle de pragas em Salto SP',
-      secondaryKeywords: [
-        'Dedetização em Salto SP',
-        'Controle de pragas para restaurantes e empresas',
-        'Dedetizadora em Itu e Indaiatuba',
-        'Desratização e descupinização comercial',
+        'Dedetização em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Controle de baratas, escorpiões, ratos e cupins com produtos ANVISA e certificado.',
+      primaryKeyword: 'Dedetização em Salto SP',
+      secondaryKeywords: ['Controle de pragas em Salto', 'Descupinização e desratização'],
+    },
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Dedetização com a S.A Manutenção.',
+  },
+  {
+    slug: 'projetos-de-restauracao',
+    index: '07',
+    name: 'Projetos de Restauração',
+    shortName: 'Revitalização de Ambientes e Estruturas',
+    heroTitle: 'PROJETOS DE RESTAURAÇÃO E REVITALIZAÇÃO COMPLETA DE AMBIENTES',
+    heroHighlightWord: 'RESTAURAÇÃO',
+    heroDescription:
+      'Transformamos e recuperamos ambientes comerciais, fachadas, imóveis antigos, áreas de condomínios e estruturas combinando todas as nossas especialidades.',
+    cardSummary:
+      'Revitalização completa integrando elétrica, pintura, serralheria, marcenaria e hidráulica para renovar imóveis, lojas, fachadas e estruturas.',
+    normSummary: 'Solução Chave na Mão · Multidisciplinar',
+    presentationParagraphs: [
+      'Precisa reformar uma sala comercial, revitalizar a fachada da sua empresa, restaurar um imóvel para locação ou renovar áreas comuns do condomínio sem ter que lidar com cinco prestadores diferentes?',
+      'Os Projetos de Restauração da S.A Manutenção unem todas as nossas especialidades — Elétrica, Pintura, Serralheria, Marcenaria e Encanador — sob uma única coordenação.',
+      'Planejamos e executamos a recuperação estética e funcional de ambientes, estruturas metálicas, madeiramentos e instalações prediais em Salto e toda a região.',
+    ],
+    executedServices: [
+      {
+        title: 'Revitalização de fachadas e frentes comerciais',
+        description: 'Integração de serralheria, iluminação em LED, reparos de alvenaria e pintura moderna.',
+      },
+      {
+        title: 'Restauração de imóveis para entrega ou locação',
+        description: 'Revisão completa de elétrica, hidráulica, portas, fechaduras e pintura nova para vistoria.',
+      },
+      {
+        title: 'Recuperação de estruturas em madeira e metal',
+        description: 'Restauração de portões, pergolados, decks, esquadrias, mezaninos e móveis.',
+      },
+      {
+        title: 'Modernização de ambientes corporativos e lojas',
+        description: 'Adequação de pontos elétricos, iluminação, pintura decorativa e ajustes de marcenaria.',
+      },
+      {
+        title: 'Revitalização de áreas comuns de condomínios',
+        description: 'Reforma de portarias, salões de festas, quiosques, garagens e áreas externas.',
+      },
+      {
+        title: 'Gestão única do início ao fim',
+        description: 'Um único orçamento técnico e uma única equipe coordenada até a entrega limpa.',
+      },
+    ],
+    applications: [
+      {
+        segment: 'Comércios e Lojas',
+        detail: 'Renovação rápida de ponto comercial para inauguração ou modernização da marca.',
+      },
+      {
+        segment: 'Proprietários e Imobiliárias',
+        detail: 'Restauração ágil de casas, apartamentos e galpões para venda, locação ou entrega de chaves.',
+      },
+      {
+        segment: 'Condomínios Residenciais e Comerciais',
+        detail: 'Revitalização de portarias, áreas de lazer, churrasqueiras e fachadas.',
+      },
+      {
+        segment: 'Empresas e Indústrias',
+        detail: 'Adequação e reforma de recepções, escritórios, refeitórios e áreas operacionais.',
+      },
+    ],
+    technicalDifferentials: [
+      {
+        title: '5 em 1: Todas as Disciplinas Juntas',
+        description: 'Sem atrasos de um profissional esperando pelo outro: nossa equipe resolve elétrica, hidráulica, madeira, ferro e pintura.',
+      },
+      {
+        title: 'Orçamento Planejado por Etapas',
+        description: 'Clareza total sobre o que será executado e acompanhamento direto pelo WhatsApp.',
+      },
+      {
+        title: 'Acabamento de Alto Padrão',
+        description: 'Atenção aos detalhes que valorizam o seu imóvel ou negócio.',
+      },
+    ],
+    safetyAndNorms: {
+      title: 'Planejamento, Organização e Garantia Integrada',
+      subtitle: 'Sua obra ou restauração conduzida por profissionais de confiança.',
+      items: [
+        'Cronograma alinhado para reduzir o tempo de intervenção no imóvel.',
+        'Conformidade técnica nas instalações elétricas (NBR 5410) e trabalhos em altura (NR-35).',
+        'Proteção das áreas adjacentes e limpeza completa na entrega.',
+        'Garantia unificada pela S.A Manutenção.',
       ],
     },
-    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Dedetização e Controle de Pragas com a S.A Manutenção.',
+    faqs: [
+      {
+        question: 'Como funciona um Projeto de Restauração com a S.A Manutenção?',
+        answer:
+          'Vamos até o seu imóvel ou empresa, avaliamos todas as necessidades (elétrica, pintura, hidráulica, marcenaria e serralheria) e montamos um único plano de trabalho coordenado, poupando seu tempo e dinheiro.',
+      },
+      {
+        question: 'Vocês fazem reforma para entrega de imóvel alugado (vistoria de saída)?',
+        answer:
+          'Sim! Realizamos todos os reparos exigidos na vistoria: pintura, troca de tomadas, conserto de torneiras, ajuste de portas, fechaduras e limpeza final.',
+      },
+    ],
+    relatedSlugs: ['pintura', 'eletrica', 'marcenaria'],
+    seo: {
+      title: 'Projetos de Restauração e Revitalização de Imóveis em Salto | S.A Manutenção',
+      description:
+        'Projetos de restauração predial, comercial e residencial em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba. Elétrica, pintura, serralheria, marcenaria e hidráulica.',
+      primaryKeyword: 'Restauração de imóveis em Salto SP',
+      secondaryKeywords: ['Reforma comercial em Salto', 'Manutenção para entrega de imóvel'],
+    },
+    whatsappMessage: 'Olá! Gostaria de solicitar um orçamento de Projeto de Restauração com a S.A Manutenção.',
+  },
+];
+
+export const SERVICE_GALLERY_ITEMS: GalleryItem[] = [
+  // 1. Elétrica
+  {
+    id: 'gal-eletrica-1',
+    serviceSlug: 'eletrica',
+    serviceName: 'Elétrica',
+    title: 'Montagem e Revisão de Quadro Elétrico (QDF)',
+    subtitle: 'Organização de circuitos, troca de disjuntores e proteção contra sobrecargas',
+    locationTag: 'Salto – SP',
+    highlightText: 'Segurança NBR 5410',
+  },
+  {
+    id: 'gal-eletrica-2',
+    serviceSlug: 'eletrica',
+    serviceName: 'Elétrica',
+    title: 'Modernização para Iluminação em LED',
+    subtitle: 'Redução de até 80% no consumo de iluminação e valorização do ambiente',
+    locationTag: 'Indaiatuba – SP',
+    highlightText: 'Economia na Conta',
+  },
+  {
+    id: 'gal-eletrica-3',
+    serviceSlug: 'eletrica',
+    serviceName: 'Elétrica',
+    title: 'Instalação de DPS, DR e Correção de Falhas',
+    subtitle: 'Proteção contra surtos elétricos, choques e eliminação de curtos-circuitos',
+    locationTag: 'Itu – SP',
+    highlightText: 'Proteção NR-10',
+  },
+
+  // 2. Pintura
+  {
+    id: 'gal-pintura-1',
+    serviceSlug: 'pintura',
+    serviceName: 'Pintura',
+    title: 'Pintura Comercial, Predial e Galpões',
+    subtitle: 'Preparação completa de superfície, tratamento de trincas e aplicação Airless',
+    locationTag: 'Itu – SP',
+    highlightText: 'Acabamento Impecável',
+  },
+  {
+    id: 'gal-pintura-2',
+    serviceSlug: 'pintura',
+    serviceName: 'Pintura',
+    title: 'Renovação de Fachadas e Áreas Externas',
+    subtitle: 'Tintas resistentes às intempéries e proteção completa contra umidade',
+    locationTag: 'Salto – SP',
+    highlightText: 'Valorização do Imóvel',
+  },
+  {
+    id: 'gal-pintura-3',
+    serviceSlug: 'pintura',
+    serviceName: 'Pintura',
+    title: 'Pintura Interna Residencial e Corporativa',
+    subtitle: 'Isolamento cuidadoso de pisos e móveis com entrega limpa e rápida',
+    locationTag: 'Indaiatuba – SP',
+    highlightText: 'Serviço Limpo',
+  },
+
+  // 3. Serralheria
+  {
+    id: 'gal-serralheria-1',
+    serviceSlug: 'serralheria',
+    serviceName: 'Serralheria',
+    title: 'Solda MIG/MAG, Portões e Estruturas Metálicas',
+    subtitle: 'Fabricação, reforço estrutural e manutenção de portões e guarda-corpos',
+    locationTag: 'Salto – SP',
+    highlightText: 'Alta Resistência',
+  },
+  {
+    id: 'gal-serralheria-2',
+    serviceSlug: 'serralheria',
+    serviceName: 'Serralheria',
+    title: 'Conserto e Ajuste de Portões e Grades',
+    subtitle: 'Substituição de roldanas, cabos de aço, travas e alinhamento de folhas',
+    locationTag: 'Porto Feliz – SP',
+    highlightText: 'Segurança Patrimonial',
+  },
+  {
+    id: 'gal-serralheria-3',
+    serviceSlug: 'serralheria',
+    serviceName: 'Serralheria',
+    title: 'Corrimãos, Escadas e Mezaninos Metálicos',
+    subtitle: 'Corte, dobra e solda de precisão com proteção anticorrosiva',
+    locationTag: 'Sorocaba – SP',
+    highlightText: 'Sob Medida',
+  },
+
+  // 4. Marcenaria
+  {
+    id: 'gal-marcenaria-1',
+    serviceSlug: 'marcenaria',
+    serviceName: 'Marcenaria',
+    title: 'Ajuste de Portas, Móveis, Balcões e Decks',
+    subtitle: 'Regulagem de ferragens, instalação de portas e conservação de madeiras',
+    locationTag: 'Itu – SP',
+    highlightText: 'Sob Medida',
+  },
+  {
+    id: 'gal-marcenaria-2',
+    serviceSlug: 'marcenaria',
+    serviceName: 'Marcenaria',
+    title: 'Instalação e Reparo de Portas, Batentes e Fechaduras',
+    subtitle: 'Alinhamento de portas raspando, troca de dobradiças e guarnições',
+    locationTag: 'Salto – SP',
+    highlightText: 'Acabamento Fino',
+  },
+  {
+    id: 'gal-marcenaria-3',
+    serviceSlug: 'marcenaria',
+    serviceName: 'Marcenaria',
+    title: 'Manutenção de Armários, Gabinetes e Pergolados',
+    subtitle: 'Troca de corrediças, puxadores e tratamento protetor em madeiras',
+    locationTag: 'Indaiatuba – SP',
+    highlightText: 'Alta Durabilidade',
+  },
+
+  // 5. Encanador
+  {
+    id: 'gal-encanador-1',
+    serviceSlug: 'encanador',
+    serviceName: 'Encanador',
+    title: 'Reparo de Vazamentos, Registros e Hidráulica',
+    subtitle: 'Manutenção limpa de tubulações, válvulas, torneiras e caixas d’água',
+    locationTag: 'Porto Feliz – SP',
+    highlightText: 'Zero Desperdício',
+  },
+  {
+    id: 'gal-encanador-2',
+    serviceSlug: 'encanador',
+    serviceName: 'Encanador',
+    title: 'Instalação de Louças, Metais, Sifões e Válvulas',
+    subtitle: 'Substituição rápida de registros, caixas acopladas e torneiras',
+    locationTag: 'Salto – SP',
+    highlightText: 'Atendimento Ágil',
+  },
+  {
+    id: 'gal-encanador-3',
+    serviceSlug: 'encanador',
+    serviceName: 'Encanador',
+    title: 'Adequação de Redes de Água Fria e Esgoto',
+    subtitle: 'Tubulações comerciais, industriais e residenciais sem infiltrações',
+    locationTag: 'Itu – SP',
+    highlightText: 'Garantia Técnica',
+  },
+
+  // 6. Dedetização
+  {
+    id: 'gal-dedetizacao-1',
+    serviceSlug: 'dedetizacao',
+    serviceName: 'Dedetização',
+    title: 'Controle de Pragas com Produtos ANVISA',
+    subtitle: 'Proteção contra insetos, escorpiões, roedores e cupins com certificado',
+    locationTag: 'Sorocaba – SP',
+    highlightText: 'Ambiente Protegido',
+  },
+  {
+    id: 'gal-dedetizacao-2',
+    serviceSlug: 'dedetizacao',
+    serviceName: 'Dedetização',
+    title: 'Desinsetização e Desratização para Empresas e Condomínios',
+    subtitle: 'Barreira química preventiva em ralos, caixas de passagem e perímetros',
+    locationTag: 'Salto – SP',
+    highlightText: 'Laudo e Certificado',
+  },
+  {
+    id: 'gal-dedetizacao-3',
+    serviceSlug: 'dedetizacao',
+    serviceName: 'Dedetização',
+    title: 'Aplicação em Gel e Pulverização Sem Cheiro',
+    subtitle: 'Segurança para residências, restaurantes, escritórios e comércios',
+    locationTag: 'Indaiatuba – SP',
+    highlightText: 'Higiene e Segurança',
+  },
+
+  // 7. Projetos de Restauração
+  {
+    id: 'gal-restauracao-1',
+    serviceSlug: 'projetos-de-restauracao',
+    serviceName: 'Projetos de Restauração',
+    title: 'Revitalização Completa de Fachadas e Imóveis',
+    subtitle: 'Elétrica, pintura, serralheria, marcenaria e hidráulica integradas',
+    locationTag: 'Salto – SP',
+    highlightText: 'Transformação Completa',
+  },
+  {
+    id: 'gal-restauracao-2',
+    serviceSlug: 'projetos-de-restauracao',
+    serviceName: 'Projetos de Restauração',
+    title: 'Reforma Rápida para Entrega de Imóvel e Vistoria',
+    subtitle: 'Revisão geral de pintura, tomadas, torneiras, portas e fechaduras',
+    locationTag: 'Itu – SP',
+    highlightText: 'Pronto para Entrega',
+  },
+  {
+    id: 'gal-restauracao-3',
+    serviceSlug: 'projetos-de-restauracao',
+    serviceName: 'Projetos de Restauração',
+    title: 'Modernização de Lojas, Recepção e Áreas Comuns',
+    subtitle: 'Um único parceiro coordenando todas as etapas do início ao fim',
+    locationTag: 'Indaiatuba – SP',
+    highlightText: 'Gestão Integrada',
+  },
+];
+
+export const INSTAGRAM_CAROUSEL_POSTS = [
+  {
+    id: 'post-1',
+    badge: 'Dica de Economia',
+    titlePrefix: 'Está pagando muito na',
+    highlight: 'conta de luz?',
+    titleSuffix: '',
+    description:
+      'Troque lâmpadas comuns por LED (economize até 80%), desligue aparelhos em standby e mantenha sua instalação elétrica revisada para evitar fugas de energia e dores de cabeça!',
+    imagePath: '/assets/aistudio/carrossel_1.png',
+    ctaLabel: 'Ver dica no Instagram',
+  },
+  {
+    id: 'post-2',
+    badge: 'Prevenção e Segurança',
+    titlePrefix: 'Proteja seu imóvel contra',
+    highlight: 'falhas elétricas!',
+    titleSuffix: '',
+    description:
+      'Nunca sobrecarregue tomadas com benjamins, evite o uso contínuo de extensões e revise os disjuntores regularmente com um eletricista de confiança.',
+    imagePath: '/assets/aistudio/carrossel_2.png',
+    ctaLabel: 'Conferir carrossel no Instagram',
+  },
+  {
+    id: 'post-3',
+    badge: 'Qualidade Profissional',
+    titlePrefix: 'Por que contar com um',
+    highlight: 'profissional',
+    titleSuffix: 'faz toda a diferença?',
+    description:
+      'Garantia de segurança para sua família e sua empresa! Evite prejuízos causados por serviços malfeitos com identificação precisa e execução garantida.',
+    imagePath: '/assets/aistudio/carrossel_3.png',
+    ctaLabel: 'Seguir @manutencao.araujo',
   },
 ];
 
 export const WHY_CHOOSE_US = [
   {
     index: '01',
-    title: 'Soluções integradas',
-    description: 'Diferentes especialidades em um único fornecedor: elétrica, predial, pintura, solda e controle de pragas.',
+    title: '7 Especialidades em um só lugar',
+    description: 'Elétrica, Pintura, Serralheria, Marcenaria, Encanador, Dedetização e Projetos de Restauração.',
   },
   {
     index: '02',
-    title: 'Atendimento regional',
-    description: 'Agilidade operacional em Salto e deslocamento rápido para Itu, Indaiatuba, Porto Feliz e Sorocaba.',
+    title: 'Atendimento próximo e rápido',
+    description: 'Agilidade em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba para você não ficar esperando.',
   },
   {
     index: '03',
-    title: 'Segurança e conformidade',
-    description: 'Serviços orientados pelas normas técnicas aplicáveis (NBR 5410, NR-10, NR-35 e diretrizes sanitárias ANVISA).',
+    title: 'Segurança para sua empresa e família',
+    description: 'Profissionais de confiança que evitam prejuízos e executam tudo dentro das normas.',
   },
   {
     index: '04',
-    title: 'Orçamento técnico',
-    description: 'Avaliação criteriosa das necessidades reais da estrutura e indicação da solução técnica adequada, sem custos ocultos.',
+    title: 'Orçamento sem compromisso',
+    description: 'Avaliamos sua necessidade com transparência e indicamos a melhor solução com preço justo.',
   },
   {
     index: '05',
-    title: 'Compromisso com a qualidade',
-    description: 'Execução profissional, materiais especificados corretamente e garantia dos serviços conforme condições contratadas.',
+    title: 'Serviço limpo e com garantia',
+    description: 'Cuidamos da organização do seu espaço e damos garantia conforme o serviço contratado.',
   },
   {
     index: '06',
-    title: 'Atendimento direto',
-    description: 'Facilidade de comunicação e solicitação ágil de serviços diretamente pelo WhatsApp com quem resolve.',
+    title: 'Chame direto no WhatsApp',
+    description: 'Sem burocracia: fale direto com nossa equipe pelo WhatsApp (11) 95145-9102.',
   },
 ];
 
@@ -744,98 +1130,98 @@ export const SEGMENTS_DATA: SegmentItem[] = [
   {
     id: 'industrias-e-galpoes',
     index: '01',
-    title: 'Indústrias e galpões industriais',
-    subtitle: 'Continuidade produtiva, segurança elétrica e conservação de plantas fabris e logísticas.',
+    title: 'Indústrias e galpões',
+    subtitle: 'Manutenção ágil para sua operação produzir com segurança.',
     description:
-      'Ambientes industriais exigem resposta rápida e conformidade rigorosa. Atuamos na manutenção de quadros elétricos (QDF), alimentação de máquinas, fabricação e reforço de estruturas metálicas em solda MIG/MAG, pintura de pisos e galpões com airless e controle integrado de pragas.',
+      'Atendemos galpões e indústrias com manutenção elétrica de quadros, iluminação, serralheria e solda estrutural, pintura de pisos e estruturas, hidráulica e controle de pragas.',
     commonDemands: [
-      'Montagem e manutenção de quadros elétricos industriais e correção de sobrecargas',
-      'Solda estrutural, bases para máquinas, guarda-corpos e reforço de mezaninos',
-      'Pintura de galpões, estruturas metálicas de cobertura e demarcação de pisos',
-      'Controle de roedores e pragas para proteção de estoques e cabos',
+      'Montagem e revisão de quadros elétricos (QDF) e iluminação industrial',
+      'Serralheria, solda MIG/MAG, reforço de mezaninos e portões',
+      'Pintura de galpões, estruturas metálicas e demarcação de pisos',
+      'Dedetização e controle de roedores com certificado',
     ],
-    recommendedServices: ['manutencao-eletrica', 'solda-e-serralheria', 'pintura-industrial-e-comercial', 'dedetizacao-e-controle-de-pragas'],
+    recommendedServices: ['eletrica', 'serralheria', 'pintura', 'dedetizacao'],
     whatsappText: 'Olá! Gostaria de solicitar um orçamento de manutenção para Indústria / Galpão com a S.A Manutenção.',
   },
   {
     id: 'empresas-e-escritorios',
     index: '02',
     title: 'Empresas e escritórios',
-    subtitle: 'Infraestrutura confiável e apresentável para equipes corporativas e centros administrativos.',
+    subtitle: 'Ambiente bem cuidado e funcionando perfeitamente para sua equipe.',
     description:
-      'Mantemos a estrutura da sua empresa operando sem interrupções. Cuidamos desde a estabilidade dos circuitos elétricos e iluminação até reparos hidráulicos, pintura corporativa e conservação predial preventiva.',
+      'Resolvemos desde tomadas, iluminação LED e quadros elétricos até ajuste de portas e armários (marcenaria), pintura corporativa, encanamento e dedetização.',
     commonDemands: [
-      'Adequação de circuitos elétricos, instalação de DPS/DR e iluminação corporativa',
-      'Manutenção hidráulica, reparos civis leves e conservação de ambientes',
-      'Pintura interna e de fachadas com planejamento fora do horário de pico',
-      'Dedetização periódica com laudo e certificado conforme contrato',
+      'Revisão elétrica, iluminação em LED e proteção para computadores',
+      'Marcenaria: ajuste de portas, fechaduras, estações de trabalho e armários',
+      'Pintura interna e revitalização de fachadas corporativas',
+      'Encanador para reparos em banheiros e copas',
     ],
-    recommendedServices: ['manutencao-eletrica', 'manutencao-predial', 'pintura-industrial-e-comercial', 'dedetizacao-e-controle-de-pragas'],
+    recommendedServices: ['eletrica', 'marcenaria', 'pintura', 'encanador'],
     whatsappText: 'Olá! Gostaria de solicitar um orçamento de manutenção para Empresa / Escritório com a S.A Manutenção.',
   },
   {
     id: 'comercios',
     index: '03',
-    title: 'Comércios e estabelecimentos comerciais',
-    subtitle: 'Segurança, apresentação impecável e funcionamento contínuo para atender seus clientes.',
+    title: 'Comércios e lojas',
+    subtitle: 'Sua loja bonita, iluminada e segura para receber seus clientes.',
     description:
-      'No varejo e nos serviços, uma falha elétrica ou problema estrutural afeta diretamente o faturamento. Oferecemos atendimento rápido para instalações elétricas comerciais, pintura de fachadas, reparos em portões de aço e controle de pragas.',
+      'Oferecemos projetos de restauração comercial, elétrica para climatização e vitrines, pintura de fachadas, conserto de portões de aço, marcenaria de balcões e hidráulica.',
     commonDemands: [
-      'Balanceamento de fases, troca de disjuntores e circuitos para refrigeração/ar-condicionado',
-      'Pintura e renovação visual de fachadas e salões de atendimento',
-      'Manutenção e solda em portões comerciais, grades e suportes metálicos',
-      'Manutenção predial corretiva ágil para evitar fechamento da loja',
+      'Iluminação de destaque em LED e revisão de disjuntores',
+      'Projetos de restauração de fachada, pintura e marcenaria comercial',
+      'Serralheria para manutenção de portas de aço, grades e suportes',
+      'Reparos hidráulicos rápidos e dedetização periódica',
     ],
-    recommendedServices: ['manutencao-eletrica', 'manutencao-predial', 'pintura-industrial-e-comercial', 'solda-e-serralheria'],
+    recommendedServices: ['eletrica', 'pintura', 'projetos-de-restauracao', 'serralheria'],
     whatsappText: 'Olá! Gostaria de solicitar um orçamento de manutenção para Comércio com a S.A Manutenção.',
   },
   {
     id: 'condominios',
     index: '04',
-    title: 'Condomínios residenciais e comerciais',
-    subtitle: 'Tranquilidade para moradores e usuários com todas as disciplinas centralizadas.',
+    title: 'Condomínios e residências',
+    subtitle: 'Tranquilidade e segurança para síndicos, moradores e famílias.',
     description:
-      'Reduzimos a sobrecarga operacional do condomínio ao integrar elétrica de áreas comuns, hidráulica, manutenção e solda de portões e grades, pintura predial e dedetização periódica em um único fornecedor de confiança.',
+      'Um único parceiro de confiança para cuidar da elétrica, encanamento, pintura, conserto de portões e grades, marcenaria de portas/áreas gourmet e dedetização.',
     commonDemands: [
-      'Manutenção de quadros de áreas comuns, iluminação, sensores e casas de bombas',
-      'Reparos e solda em portões veiculares, grades, corrimãos e estruturas metálicas',
-      'Checklists preventivos prediais, reparos hidráulicos e civis leves',
-      'Desinsetização e desratização de áreas comuns, caixas de passagem e lixeiras',
+      'Elétrica residencial e condominial: quadros, disjuntores, LED e sensores',
+      'Serralheria: conserto de portões de garagem, grades e corrimãos',
+      'Encanador para caça-vazamentos, registros, descargas e caixas d’água',
+      'Pintura, marcenaria e projetos de restauração de áreas comuns',
     ],
-    recommendedServices: ['manutencao-predial', 'manutencao-eletrica', 'solda-e-serralheria', 'dedetizacao-e-controle-de-pragas', 'pintura-industrial-e-comercial'],
-    whatsappText: 'Olá! Gostaria de solicitar um orçamento de manutenção para Condomínio com a S.A Manutenção.',
+    recommendedServices: ['eletrica', 'encanador', 'serralheria', 'pintura', 'marcenaria', 'dedetizacao'],
+    whatsappText: 'Olá! Gostaria de solicitar um orçamento para Condomínio / Residência com a S.A Manutenção.',
   },
   {
     id: 'restaurantes-e-alimenticios',
     index: '05',
-    title: 'Restaurantes e estabelecimentos alimentícios',
-    subtitle: 'Conformidade sanitária, estabilidade elétrica para cozinhas e conservação contínua.',
+    title: 'Restaurantes e setor alimentício',
+    subtitle: 'Higiene, segurança elétrica e manutenção sem interromper seu atendimento.',
     description:
-      'Cozinhas profissionais e áreas de alimentação operam sob alta exigência sanitária e elétrica. Integramos o controle técnico de pragas com produtos regularizados pela ANVISA à manutenção elétrica de câmaras frias, fornos e exaustores.',
+      'Cuidamos da dedetização com produtos ANVISA e certificado, elétrica para equipamentos de cozinha/refrigeração, encanamento de pias/caixas de gordura e marcenaria/pintura.',
     commonDemands: [
-      'Controle integrado de pragas (insetos e roedores) com emissão de certificado conforme serviço',
-      'Manutenção elétrica preventiva para equipamentos de refrigeração, fornos e coifas',
-      'Reparos hidráulicos, vedação de ralos/frestas e manutenção predial sanitária',
-      'Pintura higiênica e recuperação de bancadas e suportes metálicos',
+      'Dedetização e controle de pragas com emissão de certificado',
+      'Elétrica dimensionada para freezers, fornos, coifas e iluminação',
+      'Encanador para torneiras profissionais, sifões e caixas de gordura',
+      'Pintura e conservação de mesas, balcões e salão',
     ],
-    recommendedServices: ['dedetizacao-e-controle-de-pragas', 'manutencao-eletrica', 'manutencao-predial'],
-    whatsappText: 'Olá! Gostaria de solicitar um orçamento para Restaurante / Estabelecimento Alimentício com a S.A Manutenção.',
+    recommendedServices: ['dedetizacao', 'eletrica', 'encanador', 'marcenaria'],
+    whatsappText: 'Olá! Gostaria de solicitar um orçamento para Restaurante / Alimentação com a S.A Manutenção.',
   },
   {
     id: 'gestores-prediais-e-sindicos',
     index: '06',
-    title: 'Gestores prediais e síndicos',
-    subtitle: 'Um parceiro estratégico para eliminar a gestão fragmentada de múltiplos prestadores.',
+    title: 'Síndicos, imobiliárias e gestores',
+    subtitle: 'Acabe com a dor de cabeça de procurar vários profissionais avulsos.',
     description:
-      'Síndicos profissionais, administradoras e gestores de facilities contam com a S.A Manutenção para centralizar demandas técnicas com orçamentos transparentes, relatórios fotográficos de inspeção e cumprimento de cronogramas.',
+      'Atendemos síndicos, administradoras e imobiliárias com pacotes completos de manutenção preventiva, corretiva e projetos de restauração para entrega de imóveis.',
     commonDemands: [
-      'Fornecedor único para elétrica, hidráulica, serralheria, pintura e controle de pragas',
-      'Inspeções prediais detalhadas com relatórios técnicos para assembleias e diretorias',
-      'Cronogramas de manutenção preventiva que reduzem chamados emergenciais',
-      'Canal direto pelo WhatsApp para solicitação e acompanhamento de orçamentos',
+      'Projetos de restauração completos para entrega de chaves e vistorias',
+      'Fornecedor único para elétrica, pintura, serralheria, marcenaria e hidráulica',
+      'Orçamentos claros e atendimento rápido direto pelo WhatsApp',
+      'Dedetização periódica de condomínios e imóveis',
     ],
-    recommendedServices: ['manutencao-predial', 'manutencao-eletrica', 'pintura-industrial-e-comercial', 'solda-e-serralheria', 'dedetizacao-e-controle-de-pragas'],
-    whatsappText: 'Olá! Sou gestor predial / síndico e gostaria de conversar sobre parceria de manutenção com a S.A Manutenção.',
+    recommendedServices: ['projetos-de-restauracao', 'eletrica', 'pintura', 'encanador', 'serralheria', 'marcenaria', 'dedetizacao'],
+    whatsappText: 'Olá! Sou síndico / gestor e gostaria de conversar sobre parceria com a S.A Manutenção.',
   },
 ];
 
@@ -843,45 +1229,42 @@ export const REGIONAL_CITIES: RegionalCity[] = [
   {
     name: 'Salto',
     state: 'SP',
-    tag: 'Base Operacional',
-    corridor: 'Eixo SP-075 / SP-300',
+    tag: 'Base Local',
+    corridor: 'Atendimento em todos os bairros',
     description:
-      'Nossa cidade-sede. Oferecemos pronta resposta para indústrias, distritos industriais, condomínios residenciais e comerciais, restaurantes e empresas em todos os bairros de Salto – SP.',
+      'Nossa cidade-sede! Atendemos com máxima rapidez residências, condomínios, comércios e indústrias em toda a cidade de Salto – SP.',
     focusAreas: [
-      'Distritos e polos industriais de Salto',
-      'Condomínios horizontais e verticais',
-      'Comércio central e corredores comerciais',
-      'Atendimento elétrico, predial, pintura, solda e pragas',
+      'Elétrica, Pintura, Serralheria e Marcenaria',
+      'Encanador, Dedetização e Projetos de Restauração',
+      'Condomínios, empresas, lojas e residências em Salto',
     ],
     coordinates: { x: 52, y: 46 },
   },
   {
     name: 'Itu',
     state: 'SP',
-    tag: 'Atendimento Imediato',
-    corridor: 'Conexão direta com Salto',
+    tag: 'Vizinha Imediata',
+    corridor: 'Deslocamento rápido Salto–Itu',
     description:
-      'Pela proximidade imediata com Salto, atendemos Itu com a mesma agilidade local, suprindo demandas de galpões, indústrias, condomínios de alto padrão e estabelecimentos comerciais.',
+      'Pela proximidade imediata com Salto, nossa equipe atende Itu diariamente em condomínios, empresas, comércios e galpões.',
     focusAreas: [
-      'Polos industriais e logísticos na SP-075 e SP-300',
-      'Condomínios residenciais e empresariais em Itu',
-      'Comércios, restaurantes e centros de compras',
-      'Manutenção preventiva e corretiva integrada',
+      'Condomínios e residências em Itu',
+      'Comércios, restaurantes e escritórios',
+      'Manutenção completa e projetos de restauração',
     ],
     coordinates: { x: 58, y: 60 },
   },
   {
     name: 'Indaiatuba',
     state: 'SP',
-    tag: 'Forte Presença Industrial',
-    corridor: 'Eixo Rodovia Santos Dumont (SP-075)',
+    tag: 'Atendimento Ágil',
+    corridor: 'Eixo SP-075',
     description:
-      'Atendemos o forte parque industrial, logístico, comercial e condominial de Indaiatuba com soluções completas em elétrica, pintura industrial airless, solda MIG/MAG e manutenção predial.',
+      'Levamos todas as 7 especialidades da S.A Manutenção para empresas, indústrias, condomínios e comércios em Indaiatuba.',
     focusAreas: [
-      'Distrito Industrial e galpões logísticos em Indaiatuba',
-      'Empresas, escritórios e prédios corporativos',
-      'Condomínios e estabelecimentos comerciais',
-      'Adequação elétrica NBR 5410 / NR-10 e pintura técnica',
+      'Empresas, galpões e polos industriais',
+      'Condomínios residenciais e comerciais',
+      'Elétrica, pintura, serralheria, marcenaria e hidráulica',
     ],
     coordinates: { x: 74, y: 30 },
   },
@@ -889,29 +1272,27 @@ export const REGIONAL_CITIES: RegionalCity[] = [
     name: 'Porto Feliz',
     state: 'SP',
     tag: 'Cobertura Regional',
-    corridor: 'Eixo Rodovia Marechal Rondon (SP-300)',
+    corridor: 'Eixo Rodovia Marechal Rondon',
     description:
-      'Suporte técnico especializado para as indústrias em expansão, empresas, fazendas corporativas, condomínios e comércios instalados em Porto Feliz.',
+      'Atendimento técnico de confiança para empresas, condomínios, propriedades e comércios em Porto Feliz.',
     focusAreas: [
-      'Corredor industrial da Rodovia Marechal Rondon',
-      'Estruturas metálicas, solda e pintura anticorrosiva',
-      'Manutenção elétrica e quadros de distribuição (QDF)',
-      'Controle de pragas com certificado e manutenção predial',
+      'Manutenção elétrica, hidráulica e pintura',
+      'Serralheria, marcenaria e restauração',
+      'Dedetização e controle de pragas',
     ],
     coordinates: { x: 26, y: 42 },
   },
   {
     name: 'Sorocaba',
     state: 'SP',
-    tag: 'Polo Metropolitano',
+    tag: 'Polo Regional',
     corridor: 'Eixo SP-075 / Castelo Branco',
     description:
-      'Levamos a eficiência da manutenção integrada da S.A Manutenção para indústrias, centros logísticos, redes comerciais e condomínios em Sorocaba.',
+      'Soluções integradas da S.A Manutenção para empresas, redes comerciais, condomínios e indústrias em Sorocaba.',
     focusAreas: [
-      'Zonas industriais e centros de distribuição',
-      'Obras de pintura industrial e comercial em grande escala',
-      'Manutenção elétrica, quadros QDF e serralheria técnica',
-      'Pacotes integrados de manutenção para empresas',
+      'Projetos de restauração e manutenção empresarial',
+      'Elétrica, pintura, serralheria e marcenaria',
+      'Atendimento agendado pelo WhatsApp',
     ],
     coordinates: { x: 24, y: 78 },
   },

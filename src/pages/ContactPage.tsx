@@ -3,7 +3,6 @@ import {
   Phone,
   Instagram,
   MapPin,
-  MessageSquare,
   CheckCircle2,
   AlertCircle,
   Copy,
@@ -40,7 +39,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     telefone: '',
     email: '',
     cidade: 'Salto - SP',
-    servico: 'Manutenção Elétrica',
+    servico: 'Elétrica',
     descricao: '',
   });
 
@@ -93,7 +92,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     }
 
     if (!formData.descricao.trim() || formData.descricao.trim().length < 10) {
-      nextErrors.descricao = 'Descreva brevemente a necessidade técnica (mínimo de 10 caracteres).';
+      nextErrors.descricao = 'Descreva brevemente a necessidade (mínimo de 10 caracteres).';
     }
 
     setErrors(nextErrors);
@@ -136,25 +135,32 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     <>
       <SEOHead
         title="Contato e Solicitação de Orçamento | S.A Manutenção — Salto e Região"
-        description="Solicite um orçamento técnico sem custo com a S.A Manutenção pelo WhatsApp (11) 95145-9102 ou formulário. Atendimento em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba."
+        description="Conte com quem entende! Solicite um orçamento sem custo com a S.A Manutenção pelo WhatsApp (11) 95145-9102 ou formulário. Atendimento em Salto, Itu, Indaiatuba, Porto Feliz e Sorocaba."
         path="/contato"
         breadcrumbs={breadcrumbs}
       />
 
       <BreadcrumbsNav items={breadcrumbs} onNavigate={onNavigate} />
 
-      <section className="py-14 lg:py-20 bg-[#171719] bg-industrial-grid border-b border-white/10">
+      {/* Main H1 uses .highlight-orange with white text */}
+      <section className="py-14 lg:py-20 bg-[#171719] bg-friendly-pattern border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <p className="font-mono-tech text-xs text-[#FF8900] uppercase tracking-widest">
-              Atendimento Comercial e Técnico · Orçamento sem Custo
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white headline-balance">
-              PRECISA DE MANUTENÇÃO? <span className="text-[#FF8900]">VAMOS RESOLVER.</span>
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-[#FF8900] uppercase tracking-wider">
+              <img
+                src="/assets/aistudio/elem_raio_3d.png"
+                alt=""
+                aria-hidden="true"
+                className="w-5 h-5 object-contain"
+              />
+              <span>Atendimento Rápido · Orçamento sem Custo</span>
+            </div>
+            <h1 className="font-display text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white headline-balance leading-[1.2] sm:leading-[1.12] break-words">
+              Precisa de manutenção? <span className="highlight-orange">Vamos resolver!</span>
             </h1>
             <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
-              Preencha os dados da sua demanda abaixo para gerar sua solicitação estruturada ou
-              inicie uma conversa direta pelo nosso WhatsApp comercial.
+              Conte com quem entende! Preencha os dados abaixo para gerar sua solicitação ou chame
+              diretamente pelo nosso WhatsApp comercial.
             </p>
           </div>
         </div>
@@ -163,24 +169,31 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       <section className="py-16 lg:py-24 bg-[#1B1B1E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Column: Direct Channels & Regional Coverage (5 cols) */}
+            {/* Left Column: Direct Channels & Mascot Callout (5 cols) */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="bg-[#252525] border border-white/10 rounded-lg p-6 sm:p-8 space-y-6">
-                <div>
-                  <span className="font-mono-tech text-xs text-[#C5A45A] uppercase">
-                    Canais Oficiais
-                  </span>
-                  <h2 className="font-display text-2xl font-bold uppercase text-white mt-1">
-                    Atendimento Direto S.A Manutenção
-                  </h2>
+              <div className="bg-[#252525] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 shadow-lg">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs font-bold text-[#C5A45A] uppercase">
+                      Canais Oficiais
+                    </span>
+                    <h2 className="font-display text-2xl font-extrabold text-white mt-1">
+                      Atendimento Direto S.A Manutenção
+                    </h2>
+                  </div>
+                  <img
+                    src="/assets/aistudio/mascote_transparent.png"
+                    alt="Mascote S.A Manutenção"
+                    className="w-16 h-24 object-contain shrink-0"
+                  />
                 </div>
 
                 <div className="space-y-4">
                   {/* WhatsApp & Phone */}
-                  <div className="p-4 rounded bg-[#171719] border border-white/10 flex items-start gap-4">
+                  <div className="p-4 rounded-xl bg-[#171719] border border-white/10 flex items-start gap-4">
                     <Phone className="w-5 h-5 text-[#FF8900] shrink-0 mt-1" aria-hidden="true" />
                     <div className="space-y-1">
-                      <span className="block text-xs font-mono-tech text-neutral-400 uppercase">
+                      <span className="block text-xs text-neutral-400 uppercase font-semibold">
                         Telefone e WhatsApp Comercial
                       </span>
                       <a
@@ -198,13 +211,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   </div>
 
                   {/* Instagram */}
-                  <div className="p-4 rounded bg-[#171719] border border-white/10 flex items-start gap-4">
+                  <div className="p-4 rounded-xl bg-[#171719] border border-white/10 flex items-start gap-4">
                     <Instagram
                       className="w-5 h-5 text-[#C5A45A] shrink-0 mt-1"
                       aria-hidden="true"
                     />
                     <div className="space-y-1">
-                      <span className="block text-xs font-mono-tech text-neutral-400 uppercase">
+                      <span className="block text-xs text-neutral-400 uppercase font-semibold">
                         Perfil Oficial no Instagram
                       </span>
                       <a
@@ -217,22 +230,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                         <ArrowUpRight className="w-4 h-4 text-[#FF8900]" aria-hidden="true" />
                       </a>
                       <span className="block text-xs text-neutral-400">
-                        Acompanhe serviços executados e rotina técnica
+                        Acompanhe serviços executados e dicas práticas
                       </span>
                     </div>
                   </div>
 
                   {/* Cities Served */}
-                  <div className="p-4 rounded bg-[#171719] border border-white/10 flex items-start gap-4">
+                  <div className="p-4 rounded-xl bg-[#171719] border border-white/10 flex items-start gap-4">
                     <MapPin className="w-5 h-5 text-[#FF8900] shrink-0 mt-1" aria-hidden="true" />
                     <div className="space-y-2 w-full">
-                      <span className="block text-xs font-mono-tech text-neutral-400 uppercase">
+                      <span className="block text-xs text-neutral-400 uppercase font-semibold">
                         Cidades Atendidas na Região
                       </span>
                       <p className="text-sm text-white font-medium">
                         Base em Salto – SP com atendimento regional ágil:
                       </p>
-                      <div className="grid grid-cols-2 gap-1.5 pt-1 text-xs font-mono-tech text-neutral-300">
+                      <div className="grid grid-cols-2 gap-1.5 pt-1 text-xs text-neutral-300">
                         {REGIONAL_CITIES.map((city) => (
                           <div key={city.name} className="flex items-center gap-1.5">
                             <span className="text-[#FF8900]">·</span>
@@ -250,22 +263,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   href={getWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-display font-bold text-base uppercase tracking-wider rounded transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-bold text-xs sm:text-base uppercase tracking-wider rounded-xl transition-colors text-center"
                 >
-                  <MessageSquare className="w-5 h-5 fill-[#171719]" aria-hidden="true" />
                   <span>CHAMAR NO WHATSAPP AGORA</span>
+                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" aria-hidden="true" />
                 </a>
               </div>
             </div>
 
             {/* Right Column: Quote Request Form (7 cols) */}
             <div className="lg:col-span-7">
-              <div className="bg-[#252525] border border-white/10 rounded-lg p-6 sm:p-8 lg:p-10">
+              <div className="bg-[#252525] border border-white/10 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-lg">
                 <div className="mb-6 pb-4 border-b border-white/10">
-                  <span className="font-mono-tech text-xs text-[#FF8900] uppercase">
-                    Orçamento Técnico sem Custo
+                  <span className="text-xs font-bold text-[#FF8900] uppercase">
+                    Orçamento Sem Custo
                   </span>
-                  <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase text-white mt-1">
+                  <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">
                     Formulário de Solicitação de Orçamento
                   </h2>
                   <p className="text-sm text-neutral-300 mt-1">
@@ -281,7 +294,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <div>
                         <label
                           htmlFor="quote-nome"
-                          className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                          className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                         >
                           Nome Completo <span className="text-[#FF8900]">*</span>
                         </label>
@@ -295,7 +308,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                             if (errors.nome) setErrors({ ...errors, nome: undefined });
                           }}
                           placeholder="Seu nome"
-                          className={`w-full px-4 py-3 rounded bg-[#171719] border ${
+                          className={`w-full px-4 py-3 rounded-xl bg-[#171719] border ${
                             errors.nome ? 'border-red-500' : 'border-white/15 focus:border-[#FF8900]'
                           } text-white text-sm outline-none transition-colors`}
                         />
@@ -311,9 +324,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <div>
                         <label
                           htmlFor="quote-empresa"
-                          className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                          className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                         >
-                          Nome da Empresa / Condomínio{' '}
+                          Empresa / Condomínio{' '}
                           <span className="text-neutral-500">(opcional)</span>
                         </label>
                         <input
@@ -321,8 +334,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           type="text"
                           value={formData.empresa}
                           onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
-                          placeholder="Ex: Condomínio ou Indústria"
-                          className="w-full px-4 py-3 rounded bg-[#171719] border border-white/15 focus:border-[#FF8900] text-white text-sm outline-none transition-colors"
+                          placeholder="Ex: Condomínio, Comércio ou Indústria"
+                          className="w-full px-4 py-3 rounded-xl bg-[#171719] border border-white/15 focus:border-[#FF8900] text-white text-sm outline-none transition-colors"
                         />
                       </div>
                     </div>
@@ -332,7 +345,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <div>
                         <label
                           htmlFor="quote-telefone"
-                          className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                          className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                         >
                           Telefone / WhatsApp <span className="text-[#FF8900]">*</span>
                         </label>
@@ -349,7 +362,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                             if (errors.telefone) setErrors({ ...errors, telefone: undefined });
                           }}
                           placeholder="(11) 99999-9999"
-                          className={`w-full px-4 py-3 rounded bg-[#171719] border font-mono-tech ${
+                          className={`w-full px-4 py-3 rounded-xl bg-[#171719] border font-mono-tech ${
                             errors.telefone
                               ? 'border-red-500'
                               : 'border-white/15 focus:border-[#FF8900]'
@@ -367,7 +380,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <div>
                         <label
                           htmlFor="quote-email"
-                          className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                          className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                         >
                           E-mail <span className="text-neutral-500">(opcional)</span>
                         </label>
@@ -380,7 +393,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                             if (errors.email) setErrors({ ...errors, email: undefined });
                           }}
                           placeholder="contato@empresa.com.br"
-                          className={`w-full px-4 py-3 rounded bg-[#171719] border ${
+                          className={`w-full px-4 py-3 rounded-xl bg-[#171719] border ${
                             errors.email
                               ? 'border-red-500'
                               : 'border-white/15 focus:border-[#FF8900]'
@@ -400,7 +413,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <div>
                         <label
                           htmlFor="quote-cidade"
-                          className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                          className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                         >
                           Cidade <span className="text-[#FF8900]">*</span>
                         </label>
@@ -408,7 +421,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           id="quote-cidade"
                           value={formData.cidade}
                           onChange={(e) => setFormData({ ...formData, cidade: e.target.value })}
-                          className="w-full px-4 py-3 rounded bg-[#171719] border border-white/15 focus:border-[#FF8900] text-white text-sm outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#171719] border border-white/15 focus:border-[#FF8900] text-white text-sm outline-none transition-colors"
                         >
                           <option value="Salto - SP">Salto - SP</option>
                           <option value="Itu - SP">Itu - SP</option>
@@ -423,7 +436,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <div>
                         <label
                           htmlFor="quote-servico"
-                          className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                          className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                         >
                           Tipo de Serviço Desejado <span className="text-[#FF8900]">*</span>
                         </label>
@@ -431,7 +444,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           id="quote-servico"
                           value={formData.servico}
                           onChange={(e) => setFormData({ ...formData, servico: e.target.value })}
-                          className="w-full px-4 py-3 rounded bg-[#171719] border border-white/15 focus:border-[#FF8900] text-white text-sm outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#171719] border border-white/15 focus:border-[#FF8900] text-white text-sm outline-none transition-colors"
                         >
                           {SERVICES_DATA.map((s) => (
                             <option key={s.slug} value={s.name}>
@@ -449,7 +462,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     <div>
                       <label
                         htmlFor="quote-descricao"
-                        className="block text-xs font-mono-tech uppercase text-neutral-300 mb-2"
+                        className="block text-xs font-semibold uppercase text-neutral-300 mb-2"
                       >
                         Descrição da Necessidade <span className="text-[#FF8900]">*</span>
                       </label>
@@ -462,8 +475,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           setFormData({ ...formData, descricao: e.target.value });
                           if (errors.descricao) setErrors({ ...errors, descricao: undefined });
                         }}
-                        placeholder="Descreva o serviço que precisa, tipo de imóvel (indústria, comércio, condomínio) e urgência..."
-                        className={`w-full px-4 py-3 rounded bg-[#171719] border ${
+                        placeholder="Descreva o serviço que precisa, tipo de imóvel (residência, comércio, condomínio ou indústria) e urgência..."
+                        className={`w-full px-4 py-3 rounded-xl bg-[#171719] border ${
                           errors.descricao
                             ? 'border-red-500'
                             : 'border-white/15 focus:border-[#FF8900]'
@@ -479,33 +492,31 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
                     <button
                       type="submit"
-                      className="w-full py-4 px-6 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-display font-bold text-base uppercase tracking-wider rounded transition-colors cursor-pointer"
+                      className="w-full py-4 px-6 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-bold text-base uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
                     >
                       SOLICITAR ORÇAMENTO
                     </button>
                   </form>
                 ) : (
-                  /* Transparent WhatsApp Dispatch Panel (Does not fake backend send; provides direct verified WhatsApp link with prefilled message) */
-                  <div className="bg-[#171719] border border-[#FF8900] rounded-lg p-6 space-y-5">
+                  <div className="bg-[#171719] border border-[#FF8900] rounded-2xl p-6 space-y-5">
                     <div className="flex items-start gap-3">
                       <CheckCircle2
                         className="w-6 h-6 text-[#FF8900] shrink-0 mt-0.5"
                         aria-hidden="true"
                       />
                       <div>
-                        <h3 className="font-display text-2xl font-bold uppercase text-white">
+                        <h3 className="font-display text-2xl font-bold text-white">
                           Dados Validados — Envie Agora pelo WhatsApp
                         </h3>
                         <p className="text-sm text-neutral-300 mt-1">
-                          Para garantir atendimento imediato sem perda de informações, clique no
-                          botão abaixo para encaminhar sua solicitação diretamente ao WhatsApp da{' '}
-                          <strong>S.A Manutenção ({COMPANY_INFO.phoneDisplay})</strong> com todos os
-                          dados preenchidos automaticamente:
+                          Clique no botão abaixo para encaminhar sua solicitação diretamente ao
+                          WhatsApp da <strong>S.A Manutenção ({COMPANY_INFO.phoneDisplay})</strong>{' '}
+                          com todos os dados preenchidos automaticamente:
                         </p>
                       </div>
                     </div>
 
-                    <div className="p-4 rounded bg-[#252525] border border-white/10 font-mono-tech text-xs text-neutral-200 whitespace-pre-wrap leading-relaxed">
+                    <div className="p-4 rounded-xl bg-[#252525] border border-white/10 font-mono-tech text-xs text-neutral-200 whitespace-pre-wrap leading-relaxed">
                       {preparedSummaryText}
                     </div>
 
@@ -514,16 +525,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                         href={preparedWhatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 inline-flex items-center justify-center gap-2.5 py-4 px-6 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-display font-bold text-base uppercase tracking-wider rounded transition-colors text-center"
+                        className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 sm:py-4 px-4 sm:px-6 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-bold text-xs sm:text-base uppercase tracking-wider rounded-xl transition-colors text-center"
                       >
-                        <MessageSquare className="w-5 h-5 fill-[#171719]" aria-hidden="true" />
                         <span>ABRIR WHATSAPP E ENVIAR SOLICITAÇÃO</span>
+                        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" aria-hidden="true" />
                       </a>
 
                       <button
                         type="button"
                         onClick={handleCopySummary}
-                        className="inline-flex items-center justify-center gap-2 py-3.5 px-5 bg-[#252525] hover:bg-white/10 text-white border border-white/15 font-display font-bold text-sm uppercase tracking-wider rounded transition-colors cursor-pointer"
+                        className="inline-flex items-center justify-center gap-2 py-3.5 px-5 bg-[#252525] hover:bg-white/10 text-white border border-white/15 font-bold text-sm uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
                       >
                         {copied ? (
                           <>

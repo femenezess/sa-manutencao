@@ -7,9 +7,8 @@ import {
   MapPin,
   Instagram,
   ArrowUpRight,
-  MessageSquare,
 } from 'lucide-react';
-import { BrandLogo } from './BrandVisuals';
+import { BrandLogo, WhatsAppIcon } from './BrandVisuals';
 import { COMPANY_INFO, SERVICES_DATA, getWhatsAppLink } from '../data/siteData';
 
 interface NavigationProps {
@@ -194,7 +193,7 @@ export const Header: React.FC<NavigationProps> = ({ currentPath, onNavigate }) =
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center justify-center px-4 py-2.5 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-display font-bold text-sm tracking-wider uppercase rounded transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF8900]"
           >
-            SOLICITAR ORÇAMENTO
+            <span>SOLICITAR ORÇAMENTO</span>
           </a>
 
           {/* Mobile Menu Trigger (touch target >= 44px) */}
@@ -320,9 +319,9 @@ export const Header: React.FC<NavigationProps> = ({ currentPath, onNavigate }) =
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center py-3 px-4 bg-[#FF8900] text-[#171719] font-display font-bold text-base tracking-wider uppercase rounded"
+              className="w-full inline-flex items-center justify-center py-3 px-4 bg-[#FF8900] text-[#171719] font-display font-bold text-xs sm:text-base tracking-wider uppercase rounded-lg text-center"
             >
-              SOLICITAR ORÇAMENTO PELO WHATSAPP
+              <span>SOLICITAR ORÇAMENTO PELO WHATSAPP</span>
             </a>
           </div>
         </div>
@@ -347,10 +346,10 @@ export const Footer: React.FC<NavigationProps> = ({ onNavigate }) => {
           {/* Column 1: Brand & Institutional Summary (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <BrandLogo variant="footer" />
-            <p className="text-sm text-neutral-400 leading-relaxed max-w-sm">
-              A S.A Manutenção é especializada em manutenção técnica integrada. Unimos elétrica,
-              manutenção predial, pintura industrial e comercial, solda e controle de pragas em um
-              único parceiro estratégico.
+            <p className="text-sm text-neutral-300 leading-relaxed max-w-sm">
+              Conte com quem entende! Unimos Elétrica, Pintura, Serralheria, Marcenaria, Encanador,
+              Dedetização e Projetos de Restauração em um único parceiro de confiança em Salto e
+              região.
             </p>
             <div className="pt-2 space-y-2 text-sm">
               <div className="flex items-center gap-2.5 text-white">
@@ -528,11 +527,11 @@ export const FloatingWhatsApp: React.FC = () => {
         href={getWhatsAppLink()}
         target="_blank"
         rel="noopener noreferrer"
+        title="Solicitar orçamento pelo WhatsApp (11) 95145-9102"
         aria-label="Solicitar orçamento pelo WhatsApp (11) 95145-9102"
-        className="group flex items-center gap-2.5 bg-[#FF8900] hover:bg-[#e67a00] text-[#171719] font-display font-bold text-sm uppercase tracking-wider px-4 py-3 rounded-lg shadow-xl border border-white/20 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.45)] border-2 border-white/25 transition-transform duration-150 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
       >
-        <MessageSquare className="w-5 h-5 fill-[#171719] shrink-0" aria-hidden="true" />
-        <span className="whitespace-nowrap">Orçamento WhatsApp</span>
+        <WhatsAppIcon className="w-7 h-7" />
       </a>
     </div>
   );

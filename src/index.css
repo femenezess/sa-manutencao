@@ -3,16 +3,20 @@
 
 @layer base {
   :root {
-    --font-display: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-condensed: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
 
-  html {
+  html,
+  body {
     font-family: var(--font-sans);
     background-color: #171719;
     color: #FFFFFF;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -34,6 +38,10 @@
   font-family: var(--font-display);
 }
 
+.font-condensed {
+  font-family: var(--font-condensed);
+}
+
 .font-sans {
   font-family: var(--font-sans);
 }
@@ -47,15 +55,22 @@
   text-wrap: balance;
 }
 
-/* Subtle industrial architectural grid surface */
-.bg-industrial-grid {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+/* Friendly orange text highlight box with WHITE text that wraps cleanly on mobile */
+.highlight-orange {
+  background-color: #FF8900;
+  color: #FFFFFF;
+  padding: 0.05em 0.3em;
+  border-radius: 0.35rem;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
-/* Geometric orange cut corner inspired by @manutencao.araujo visual identity */
-.clip-industrial-corner {
-  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+/* Subtle warm pattern background inspired by the carousel reference */
+.bg-friendly-pattern {
+  background-color: #171719;
+  background-image: radial-gradient(circle at 85% 20%, rgba(255, 137, 0, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 15% 80%, rgba(197, 164, 90, 0.08) 0%, transparent 40%);
 }
